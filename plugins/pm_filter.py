@@ -938,7 +938,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "sinfo":
         await query.answer(text=script.SINFO, show_alert=True)
         
-   elif query.data == "rendering_info":
+    elif query.data == "rendering_info":
         await query.answer(text=script.RENDERING_TXT, show_alert=True)
 
     elif query.data == "start":
