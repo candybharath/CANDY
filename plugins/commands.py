@@ -783,7 +783,7 @@ async def deletemultiplefiles(bot, message):
         parse_mode=enums.ParseMode.HTML
     )
     
-@Client.on_message(filters.command("alive", CMD))
+@Client.on_message(filters.command("alive"))
 async def alive(_, message):
     myrr = await message.reply_sticker("CAACAgIAAxkBAAEIK1lkFAN0BjHbiwRY08v-7EFYRqI2fQACKRgAAhP_2UkVxgiD_rlLGS8E")
     andi = await message.reply_text("ʜᴇʏ ʙᴜᴅᴅʏ ɪ ᴀᴍ ᴀʟɪᴠᴇ 💃\n\nᴄʟɪᴄᴋ /start ꜰᴏʀ ᴍᴏʀᴇ​ 😻")
@@ -792,7 +792,7 @@ async def alive(_, message):
     await andi.delete()
     await message.delete()
     
-@Client.on_message(filters.command("ping", CMD))
+@Client.on_message(filters.command("ping"))
 async def ping(_, message):
     start_t = time.time()
     rm = await message.reply_text("...........")
