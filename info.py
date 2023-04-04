@@ -76,6 +76,14 @@ MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
+#redict
+MAIN_CHANNEL = environ.get('MAIN_CHANNEL',"https://t.me/nasrani_update")
+FILE_FORWARD = environ.get('FILE_FORWARD',"https://t.me/+A9emw13aEyxkYzE1")
+MSG_ALRT = environ.get('MSG_ALRT', '𝑪𝑯𝑬𝑪𝑲 & 𝑻𝑹𝒀 𝑨𝑳𝑳 𝑴𝒀 𝑭𝑬𝑨𝑻𝑼𝑹𝑬𝑺')
+FILE_CHANNEL = int(environ.get('FILE_CHANNEL', 0))
+
+
+
 # Delete Time
 IMDB_DLT_TIME = int(environ.get('IMDB_DLT_TIME', 600))
 
