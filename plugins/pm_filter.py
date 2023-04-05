@@ -326,7 +326,7 @@ async def advantage_spoll_choker(bot, query):
 @Client.on_callback_query(filters.regex(r"^languages#"))
 async def languages_cb_handler(client: Client, query: CallbackQuery):
 
-    if int(query.from_user.id) not in [query.message.reply_to_message.from_user.id, 0]:
+    if int(query.from_user.id) not in [query.from_user.id, 0]:
         return await query.answer(
             f"⚠️ ʜᴇʟʟᴏ{query.from_user.first_name},\nᴛʜɪꜱ ɪꜱ ɴᴏᴛ ʏᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ,\nʀᴇQᴜᴇꜱᴛ ʏᴏᴜʀ'ꜱ...",
             show_alert=True,
@@ -1758,7 +1758,7 @@ async def auto_filter(client, msg, spoll=False):
     btn.insert(0, [
         InlineKeyboardButton(f'🔍 {search} 🔎', 'reqst1')
     ])
-   # await message.delete()
+    await message.delete()
     m=await message.reply_text("🔍") 
     await asyncio.sleep(1)
     await m.delete()
