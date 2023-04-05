@@ -45,7 +45,7 @@ async def give_filter(client, message):
     pic = imdb.get('poster')
     poster = pic.replace('.jpg', "._V1_UX360.jpg")
     imdb = await get_poster(searchh) if IMDB else None                                        
-    if imdb and imdb.get('poster'):
+#    if imdb and imdb.get('poster'):
                                   
     if AUTH_CHANNEL and not await is_subscribed(client, message):
         try:
