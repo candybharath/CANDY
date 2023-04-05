@@ -110,6 +110,7 @@ class Database:
         default = {
             'button': SINGLE_BUTTON,
             'botpm': P_TTI_SHOW_OFF,
+            'bottpm': P_TTI_SHOW_OFF,
             'file_secure': PROTECT_CONTENT,
             'imdb': IMDB,
             'spell_check': SPELL_CHECK_REPLY,
