@@ -84,13 +84,13 @@ async def give_filter(client, message):
                                        reply_markup=InlineKeyboardMarkup(btn))
                     
                                                 
-                except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
-                    pic = imdb.get('poster')
-                    poster = pic.replace('.jpg', "._V1_UX360.jpg")
-                    await message.reply_photo(photo=imdb['poster'], caption=caption,
+            except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
+                pic = imdb.get('poster')
+                poster = pic.replace('.jpg', "._V1_UX360.jpg")
+                await message.reply_photo(photo=imdb['poster'], caption=caption,
                                             reply_markup=InlineKeyboardMarkup(btn))
-                except Exception as e:
-                    logger.exception(e)
+            except Exception as e:
+                logger.exception(e)
         try:
                     
             if AUTH_CHANNEL and not await is_subscribed(client, message):
