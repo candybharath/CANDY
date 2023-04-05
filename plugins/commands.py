@@ -502,6 +502,10 @@ async def settings(client, message):
                     callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
                 ),
                 InlineKeyboardButton(
+                    'Pm',
+                    callback_data=f'setgs#bottpm#{settings["bottpm"]}#{grp_id}',
+                ),
+                InlineKeyboardButton(
                     'Mᴀɴᴜᴀʟ Sᴛᴀʀᴛ' if settings["botpm"] else 'Aᴜᴛᴏ Sᴇɴᴅ',
                     callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
                 ),
