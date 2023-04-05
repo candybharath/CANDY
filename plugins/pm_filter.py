@@ -2229,10 +2229,11 @@ async def global_filters(client, message, text=False):
                 try:
                     if fileid == "None":
                         if btn == "[]":
-                            joelkb = await client.send_message(photo=imdb['poster'],
+                            joelkb = await client.send_message(
                                 
                                 group_id, 
-                                reply_text, 
+                                reply_text,
+                                photo=imdb['poster'],
                                 disable_web_page_preview=True,
                                 reply_to_message_id=reply_id
                             )
@@ -2282,10 +2283,11 @@ async def global_filters(client, message, text=False):
                             
                         else:
                             button = eval(btn)
-                            joelkb = await client.send_message(photo=imdb['poster'],
+                            joelkb = await client.send_message(
                                 
                                 group_id,
                                 reply_text,
+                                photo=imdb['poster'],
                                 disable_web_page_preview=True,
                                 reply_markup=InlineKeyboardMarkup(button),
                                 reply_to_message_id=reply_id
@@ -2335,11 +2337,12 @@ async def global_filters(client, message, text=False):
                                         await joelkb.delete()
 
                     elif btn == "[]":
-                        joelkb = await client.send_cached_media(photo=imdb['poster'],
+                        joelkb = await client.send_cached_media(
                             
                             group_id,
                             fileid,
                             caption=reply_text or "",
+                            photo=imdb['poster'],
                             reply_to_message_id=reply_id
                         )
                         manual = await manual_filters(client, message)
@@ -2388,10 +2391,11 @@ async def global_filters(client, message, text=False):
 
                     else:
                         button = eval(btn)
-                        joelkb = await message.reply_cached_media(photo=imdb['poster'],
+                        joelkb = await message.reply_cached_media(
                         
                             fileid,
                             caption=reply_text or "",
+                            photo=imdb['poster'],
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
