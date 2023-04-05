@@ -12,11 +12,11 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import LANGUAGES, ADMINS, AUTH_CHANNEL, AUTH_USERS, SUPPORT_CHAT_ID, CUSTOM_FILE_CAPTION, MSG_ALRT, PICS, AUTH_GROUPS, P_TTI_SHOW_OFF, GRP_LNK, CHNL_LNK, LOG_CHANNEL, MAX_B_TN, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, IMDB_DLT_TIME, FILE_FORWARD, FILE_CHANNEL, MAIN_CHANNEL, SP, FILES, SELECT, FILE_PROTECT
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, IMDB_DLT_TIME, FILE_FORWARD, FILE_CHANNEL, MAIN_CHANNEL, SP, LOGIN_CHANNEL
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
-from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, send_all
+from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, mute_login, send_all
 from database.users_chats_db import db
 from database.ia_filterdb import Media, get_file_details, get_search_results, get_bad_files
 from database.filters_mdb import (
@@ -41,9 +41,9 @@ SPELL_CHECK = {}
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
     content = message.text                               
-    if AUTH_CHANNEL and not await is_subscribed(client, message):
+    ifLOGIN_CHANNEL and not await mute(client, message):
         try:
-            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))          
+            invite_link = await client.create_chat_invite_link(int(LOGIN_CHANNEL))          
         except ChatAdminRequired:
             logger.error("Make sure Bot is admin in Forcesub channel")
             return
@@ -887,7 +887,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         userid = query.message.reply_to_message.from_user.id
         if int(userid) not in [query.from_user.id, 0]:
             return await query.answer("This Is Not For You!", show_alert=True)
-        if AUTH_CHANNEL and not await is_subscribed(client, query):
+        if LOGIN_CHANNEL and not await mute_login(client, query):
             await query.answer("Please join first my Updates Channel", show_alert=True)
             return
         await client.unban_chat_member(query.message.chat.id, query.from_user.id)
