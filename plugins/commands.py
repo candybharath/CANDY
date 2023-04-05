@@ -501,13 +501,14 @@ async def settings(client, message):
                     'Fɪʟᴇ Sᴇɴᴅ Mᴏᴅᴇ',
                     callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
                 ),
-                InlineKeyboardButton(
-                    'Pm',
-                    callback_data=f'setgs#bottpm#{settings["bottpm"]}#{grp_id}',
-                ),
+
                 InlineKeyboardButton(
                     'Mᴀɴᴜᴀʟ Sᴛᴀʀᴛ' if settings["botpm"] else 'Aᴜᴛᴏ Sᴇɴᴅ',
                     callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
+                ),
+                InlineKeyboardButton(
+                    'Pm' if settings["bottpm"] else 'auto pm',
+                    callback_data=f'setgs#bottpm#{settings["bottpm"]}#{grp_id}',
                 ),
             ],
             [
