@@ -45,6 +45,22 @@ async def give_filter(client, message):
     imdb = await get_poster(searchh) if IMDB else None                             
     if imdb and imdb.get('poster'):
         try:
+            btn = [[
+                InlineKeyboardButton(f"{imdb.get('title')}", url="imdb['url']")
+            ]]                                      
+            await msg.reply_photo(photo=imdb['poster'],
+                                       reply_markup=InlineKeyboardMarkup(btn))
+                    
+                                                
+            except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
+                pic = imdb.get('poster')
+                poster = pic.replace('.jpg', "._V1_UX360.jpg")
+                await msg.reply_photo(photo=imdb['poster'], caption=caption,
+                                            reply_markup=InlineKeyboardMarkup(btn))
+            except Exception as e:
+                logger.exception(e)
+        try:
+                    
             if AUTH_CHANNEL and not await is_subscribed(client, message):
                 try:
                     invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
