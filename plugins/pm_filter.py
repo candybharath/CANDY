@@ -2216,6 +2216,7 @@ async def global_filters(client, message, text=False):
     name = text or message.text
     reply_id = message.reply_to_message.id if message.reply_to_message else message.id
     keywords = await get_gfilters('gfilters')
+    imdb = await get_poster(name) if IMDB else None
     for keyword in reversed(sorted(keywords, key=len)):
         pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
         if re.search(pattern, name, flags=re.IGNORECASE):
@@ -2229,6 +2230,7 @@ async def global_filters(client, message, text=False):
                     if fileid == "None":
                         if btn == "[]":
                             joelkb = await client.send_message(
+                                photo=imdb['poster'],
                                 group_id, 
                                 reply_text, 
                                 disable_web_page_preview=True,
@@ -2281,6 +2283,7 @@ async def global_filters(client, message, text=False):
                         else:
                             button = eval(btn)
                             joelkb = await client.send_message(
+                                photo=imdb['poster'],
                                 group_id,
                                 reply_text,
                                 disable_web_page_preview=True,
@@ -2333,6 +2336,7 @@ async def global_filters(client, message, text=False):
 
                     elif btn == "[]":
                         joelkb = await client.send_cached_media(
+                            photo=imdb['poster'],
                             group_id,
                             fileid,
                             caption=reply_text or "",
@@ -2385,6 +2389,7 @@ async def global_filters(client, message, text=False):
                     else:
                         button = eval(btn)
                         joelkb = await message.reply_cached_media(
+                            photo=imdb['poster'],
                             fileid,
                             caption=reply_text or "",
                             reply_markup=InlineKeyboardMarkup(button),
