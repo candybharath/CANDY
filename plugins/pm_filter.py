@@ -92,8 +92,8 @@ async def give_filter(client, message):
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
-    ad_user = query.from_user.id
-    if int(ad_user) in ADMINS:
+    if int(req) not in [query.from_user.id, 0]:
+        return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -1756,7 +1756,7 @@ async def auto_filter(client, msg, spoll=False):
             return
         if len(message.text) < 100:
             search = message.text
-            files, req, offset, total_results = await get_search_results(message.chat.id ,search.lower(), offset=0, filter=True)
+            files, offset, total_results = await get_search_results(message.chat.id ,search.lower(), offset=0, filter=True)
             if not files:
                 if settings["spell_check"]:
                     return await advantage_spell_chok(client, msg)
@@ -1768,7 +1768,7 @@ async def auto_filter(client, msg, spoll=False):
             return
     else:
         message = msg.message.reply_to_message  # msg will be callback query
-        search, req, files, offset, total_results = spoll
+        search, files, offset, total_results = spoll
     settings = await get_settings(message.chat.id)
     if 'is_shortlink' in settings.keys():
         ENABLE_SHORTLINK = settings['is_shortlink']
@@ -1833,7 +1833,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{req}_{key}_{offset}")
+                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
                 ]
             )
 
@@ -1842,7 +1842,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{req}_{key}_{offset}")
+                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
                 ]
             )
                 
@@ -1855,7 +1855,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{req}_{key}_{offset}")
+                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
                 ]
             )
 
@@ -1864,7 +1864,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{req}_{key}_{offset}")
+                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
                 ]
             )
 
@@ -1904,6 +1904,9 @@ async def auto_filter(client, msg, spoll=False):
     else:
         btn.append(
             [InlineKeyboardButton(text="𝐍𝐎 𝐌𝐎𝐑𝐄 𝐏𝐀𝐆𝐄𝐒 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄",callback_data="pages")]
+        )
+        btn.append(
+            [InlineKeyboardButton(text="Select", callback_data=f"select_{message.from_user.id}_{message.chat.id}-{message.id}_{offset}")]
         )
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
