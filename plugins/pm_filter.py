@@ -2229,8 +2229,8 @@ async def global_filters(client, message, text=False):
                 try:
                     if fileid == "None":
                         if btn == "[]":
-                            joelkb = await client.send_message(
-                                photo=imdb['poster'],
+                            joelkb = await client.send_message(photo=imdb['poster'],
+                                
                                 group_id, 
                                 reply_text, 
                                 disable_web_page_preview=True,
@@ -2282,8 +2282,8 @@ async def global_filters(client, message, text=False):
                             
                         else:
                             button = eval(btn)
-                            joelkb = await client.send_message(
-                                photo=imdb['poster'],
+                            joelkb = await client.send_message(photo=imdb['poster'],
+                                
                                 group_id,
                                 reply_text,
                                 disable_web_page_preview=True,
@@ -2335,8 +2335,8 @@ async def global_filters(client, message, text=False):
                                         await joelkb.delete()
 
                     elif btn == "[]":
-                        joelkb = await client.send_cached_media(
-                            photo=imdb['poster'],
+                        joelkb = await client.send_cached_media(photo=imdb['poster'],
+                            
                             group_id,
                             fileid,
                             caption=reply_text or "",
@@ -2388,8 +2388,8 @@ async def global_filters(client, message, text=False):
 
                     else:
                         button = eval(btn)
-                        joelkb = await message.reply_cached_media(
-                            photo=imdb['poster'],
+                        joelkb = await message.reply_cached_media(photo=imdb['poster'],
+                        
                             fileid,
                             caption=reply_text or "",
                             reply_markup=InlineKeyboardMarkup(button),
