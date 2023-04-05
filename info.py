@@ -87,6 +87,13 @@ FILE_CHANNEL = int(environ.get('FILE_CHANNEL', 0))
 
 LANGUAGES = ["malayalam", "tamil", "english", "hindi", "telugu", "kannada"]
 
+FILE_PROTECT = {}
+IMPORTED = {}
+HELPABLE = {}
+SELECT = {}
+FILES = {}
+dispatcher = None
+
 
 # Delete Time
 IMDB_DLT_TIME = int(environ.get('IMDB_DLT_TIME', 600))
