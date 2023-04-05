@@ -293,6 +293,9 @@ async def next_page(bot, query):
                     ],
                 )
     btn.insert(0, [
+        InlineKeyboardButton("Send All !", callback_data=f"send_fall#files#{key}#{offset}")
+    ])
+    btn.insert(1, [
         InlineKeyboardButton(f'🔍 {search} 🔎', 'reqst1')
     ])
     try:
@@ -1694,7 +1697,7 @@ async def auto_filter(client, msg, spoll=False):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"🔖 {get_size(file.file_size)}-{file.file_name}🔖", url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        text=f"⏳️[{get_size(file.file_size)}] {file.file_name}", url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
                 for file in files
@@ -1703,11 +1706,11 @@ async def auto_filter(client, msg, spoll=False):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"🔰{file.file_name}",
+                        text=f"⏳️{file.file_name}",
                         url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
                     ),
                     InlineKeyboardButton(
-                        text=f"🔰{get_size(file.file_size)}",
+                        text=f"⏳️{get_size(file.file_size)}",
                         url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
@@ -1718,7 +1721,7 @@ async def auto_filter(client, msg, spoll=False):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"🔖 {get_size(file.file_size)}--💠--{file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                        text=f"⏳️[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'
                     ),
                 ]
                 for file in files
@@ -1727,11 +1730,11 @@ async def auto_filter(client, msg, spoll=False):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"📥{file.file_name}",
+                        text=f"⏳️{file.file_name}",
                         callback_data=f'{pre}#{file.file_id}',
                     ),
                     InlineKeyboardButton(
-                        text=f"📥{get_size(file.file_size)}",
+                        text=f"⏳️{get_size(file.file_size)}",
                         callback_data=f'{pre}#{file.file_id}',
                     ),
                 ]
@@ -1780,8 +1783,10 @@ async def auto_filter(client, msg, spoll=False):
                     InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
                 ]
             )
-
     btn.insert(0, [
+        InlineKeyboardButton("Send All !", callback_data=f"send_fall#{pre}#{message.chat.id}-{message.id}#{0}")
+    ])
+    btn.insert(1, [
         InlineKeyboardButton(f'🔍 {search} 🔎', 'reqst1')
     ])
     await message.delete()
