@@ -41,6 +41,7 @@ SPELL_CHECK = {}
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
     content = message.text
+    searchh = message.text
     imdb = await get_poster(searchh) if IMDB else None                             
 #    if imdb and imdb.get('poster'):
     if AUTH_CHANNEL and not await is_subscribed(client, message):
