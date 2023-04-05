@@ -1833,7 +1833,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
+                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{message.from_user.id}_{message.chat.id}-{message.id}_{offset}")
                 ]
             )
 
@@ -1842,7 +1842,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
+                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{message.from_user.id}_{message.chat.id}-{message.id}_{offset}")
                 ]
             )
                 
@@ -1855,7 +1855,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
+                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{message.from_user.id}_{message.chat.id}-{message.id}_{offset}")
                 ]
             )
 
@@ -1864,7 +1864,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f"🔮 Select", callback_data="close_data")
+                    InlineKeyboardButton(f"🔮 Select", callback_data=f"select_{message.from_user.id}_{message.chat.id}-{message.id}_{offset}")
                 ]
             )
 
