@@ -42,7 +42,7 @@ SPELL_CHECK = {}
 async def give_filter(client, message):
     content = message.text
     search = message.text
-    imdb = await get_poster(search) if IMDB else None                               
+#    imdb = await get_poster(search) if IMDB else None                               
     if AUTH_CHANNEL and not await is_subscribed(client, message):
         try:
             invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
@@ -55,10 +55,10 @@ async def give_filter(client, message):
             InlineKeyboardButton("🔁 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐀𝐠𝐚𝐢𝐧 🔁", callback_data="grp_checksub")
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-#        try:
-#            await client.restrict_chat_member(message.chat.id, message.from_user.id, ChatPermissions(), datetime.now() + timedelta(minutes=1))
-#        except:
-#            pass
+        try:
+            imdb = await get_poster(search) if IMDB else None
+        except:
+            pass
         k = await message.reply_photo(
             photo=imdb['poster'],
             caption=f"👋 𝐇𝐞𝐥𝐥𝐨 {message.from_user.mention},\n\n{content} 𝐀𝐯𝐚𝐢𝐥𝐚𝐛𝐥𝐞..!!\n\n𝐏𝐥𝐞𝐚𝐬𝐞 𝐉𝐨𝐢𝐧 𝐌𝐲 '𝐔𝐩𝐝𝐚𝐭𝐞𝐬 𝐂𝐡𝐚𝐧𝐧𝐞𝐥' 𝐀𝐧𝐝 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐀𝐠𝐚𝐢𝐧. 😇",
