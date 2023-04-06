@@ -358,45 +358,37 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
 
     if int(req) not in [query.from_user.id, 0]:
 #    if int(query.from_user.id) not in [query.from_user.id, 0]:
+#    if int(query.from_user.id) not in [query.message.reply_to_message.from_user.id, 0]:
         return await query.answer(
             f"⚠️ ʜᴇʟʟᴏ{query.from_user.first_name},\nᴛʜɪꜱ ɪꜱ ɴᴏᴛ ʏᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ,\nʀᴇQᴜᴇꜱᴛ ʏᴏᴜʀ'ꜱ...",
             show_alert=True,
-        )        
+        )
+    
     _, search, key = query.data.split("#")
-    if int(req) not in [query.from_user.id, 0]:
-        return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
-    try:
-        settings = await get_settings(query.message.chat.id)
-        if 'is_shortlink' in settings.keys():
-            ENABLE_SHORTLINK = settings['is_shortlink']
-        else:
-            await save_group_settings(query.message.chat.id, 'is_shortlink', False)
-            ENABLE_SHORTLINK = False
-        if ENABLE_SHORTLINK == True:
-            if settings['button']:
-                btn = [
-                    [
-                        InlineKeyboardButton(
-                            text=lang.title(),
-                            callback_data=f"fl#{lang.lower()}#{search}#{key}"
-                            ),
-                    ]
-                    for lang in LANGUAGES
-                ]
 
-                btn.insert(
-                    0,
-                    [
-                        InlineKeyboardButton(
-                            text="👇 𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌 👇", callback_data="ident"
-                        )
-                    ],
-                )
-                req = query.from_user.id
-                offset = 0
-                btn.append([InlineKeyboardButton(text="↭ ʙᴀᴄᴋ ᴛᴏ ꜰɪʟᴇs ​↭", callback_data=f"next_{req}_{key}_{offset}")])
+    btn = [
+        [
+            InlineKeyboardButton(
+                text=lang.title(),
+                callback_data=f"fl#{lang.lower()}#{search}#{key}"
+                ),
+        ]
+        for lang in LANGUAGES
+    ]
 
-                await query.edit_message_reply_markup(InlineKeyboardMarkup(btn))
+    btn.insert(
+        0,
+        [
+            InlineKeyboardButton(
+                text="👇 𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌 👇", callback_data="ident"
+            )
+        ],
+    )
+    req = query.from_user.id
+    offset = 0
+    btn.append([InlineKeyboardButton(text="↭ ʙᴀᴄᴋ ᴛᴏ ꜰɪʟᴇs ​↭", callback_data=f"next_{req}_{key}_{offset}")])
+
+    await query.edit_message_reply_markup(InlineKeyboardMarkup(btn))
 
 
 @Client.on_callback_query(filters.regex(r"^fl#"))
@@ -536,18 +528,25 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     ])
     offset = 0
 
-    btn.append(        [
-            InlineKeyboardButton(
-                text="↭ ʙᴀᴄᴋ ᴛᴏ ꜰɪʟᴇs ​↭",
-                callback_data=f"next_{req}_{key}_{offset}"
-                ),
-        ])
+#    btn.append(        [
+#            InlineKeyboardButton(
+#                text="𝐁𝐚𝐜𝐤 𝐓𝐨 𝐅𝐢𝐥𝐞𝐬",
+#                callback_data=f"next_{req}_{key}_{offset}"
+#                ),
+#        ])
 
+    btn.append(
+        [
+            InlineKeyboardButton("𝐁𝐚𝐜𝐤​", callback_data=f"next_{req}_{key}_{off_set}"),
+            InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"),
+            InlineKeyboardButton("𝐍𝐞𝐱𝐭", callback_data=f"next_{req}_{key}_{n_offset}")
+        ],
+    )
 
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
 
-
+                
 
 #languages
 
@@ -1774,7 +1773,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'{total}', 'dupe')
                 ]
             )
 
@@ -1783,7 +1782,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'{total}', 'dupe')
                 ]
             )
                 
@@ -1796,7 +1795,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'{total}', 'dupe')
                 ]
             )
 
@@ -1805,7 +1804,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'{total}', 'dupe')
                 ]
             )
     btn.insert(0, [
