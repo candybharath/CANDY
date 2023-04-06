@@ -406,7 +406,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         )
 
     search = f"{search} {lang}" 
-    files, _, _ = await get_search_results(chat_id, search, max_results=10)
+    files, total, _, _ = await get_search_results(chat_id, search, max_results=10)
     files = [file for file in files if re.search(lang, file.file_name, re.IGNORECASE)]
     if not files:
         await query.answer("🚫 𝗡𝗼 𝗙𝗶𝗹𝗲 𝗪𝗲𝗿𝗲 𝗙𝗼𝘂𝗻𝗱 🚫", show_alert=1)
@@ -539,7 +539,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
 #    btn.append(
 #        [
 #            InlineKeyboardButton("𝐁𝐚𝐜𝐤​", callback_data=f"next_{req}_{key}_{offset}"),
-#            InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1}", callback_data="pages")
+#            InlineKeyboardButton(f"{math.ceil(total)}", callback_data="pages")
 #          
 #        ],
 #    )
