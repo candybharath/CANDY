@@ -247,6 +247,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             await verify_user(client, userid, token)
+            return
         else:
             return await message.reply_text(
                 text="<b>Invalid link or Expired link !</b>",
