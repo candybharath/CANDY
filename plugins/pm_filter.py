@@ -352,7 +352,7 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
 
     
 
-
+    search = search.replace("_", " ")
     req = query.from_user.id
     chat_id = query.message.chat.id
     message = query.message
@@ -366,7 +366,7 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
         offset = int(offset)
     except:
         offset = 0
-    search = search.replace("_", " ")
+    search = f"{search} {lang}" 
     if not search:
         await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
         return    
