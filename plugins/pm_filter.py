@@ -1773,7 +1773,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{total}', 'dupe')
+                    InlineKeyboardButton(f'{total_results}', 'dupe')
                 ]
             )
 
@@ -1782,7 +1782,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{total}', 'dupe')
+                    InlineKeyboardButton(f'{total_results}', 'dupe')
                 ]
             )
                 
@@ -1795,7 +1795,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{total}', 'dupe')
+                    InlineKeyboardButton(f'{total_results}', 'dupe')
                 ]
             )
 
@@ -1804,7 +1804,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{total}', 'dupe')
+                    InlineKeyboardButton(f'{total_results}', 'dupe')
                 ]
             )
     btn.insert(0, [
