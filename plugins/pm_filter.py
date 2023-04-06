@@ -167,18 +167,18 @@ async def next_page(bot, query):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                    InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
-                    InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'𝐓𝐨𝐭𝐚𝐥 𝐅𝐢𝐥𝐞𝐬: {total}', 'dupe'),
+                    InlineKeyboardButton("𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
+                    InlineKeyboardButton(f'{search}', 'tips')
                 ]
             )
 
         else:
             btn.insert(0, 
                 [
-                    InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
-                    InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'𝐓𝐨𝐭𝐚𝐥 𝐅𝐢𝐥𝐞𝐬: {total}', 'dupe'),
+                    InlineKeyboardButton("𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
+                    InlineKeyboardButton(f'{search}', 'tips')
                 ]
             )
                 
@@ -189,18 +189,18 @@ async def next_page(bot, query):
         if settings['auto_delete']:
             btn.insert(0, 
                 [
-                    InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
-                    InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'𝐓𝐨𝐭𝐚𝐥 𝐅𝐢𝐥𝐞𝐬: {total}', 'dupe'),
+                    InlineKeyboardButton("𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
+                    InlineKeyboardButton(f'{search}', 'tips')
                 ]
             )
 
         else:
             btn.insert(0, 
                 [
-                    InlineKeyboardButton(f'🗂 ꜰɪʟᴇs: {len(files)}', 'dupe'),
-                    InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'🔮 ᴛɪᴘs', 'tips')
+                    InlineKeyboardButton(f'𝐓𝐨𝐭𝐚𝐥 𝐅𝐢𝐥𝐞𝐬: {total}', 'dupe'),
+                    InlineKeyboardButton("𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
+                    InlineKeyboardButton(f'{search}', 'tips')
                 ]
             )
     try:
@@ -293,11 +293,12 @@ async def next_page(bot, query):
                     ],
                 )
     btn.insert(0, [
-        InlineKeyboardButton("Send All !", callback_data=f"send_fall#files#{key}#{offset}")
+        InlineKeyboardButton("ꜱᴇɴᴅ ᴀʟʟ", callback_data=f"send_fall#files#{key}#{offset}"),
+        InlineKeyboardButton("ꜱᴇʟᴇᴄᴛ", 'dupe')
     ])
-    btn.insert(1, [
-        InlineKeyboardButton(f'🔍 {search} 🔎', 'reqst1')
-    ])
+#    btn.insert(1, [
+#        InlineKeyboardButton(f'🔍 {search} 🔎', 'reqst1')
+#    ])
     try:
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup(btn)
@@ -380,13 +381,13 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
         0,
         [
             InlineKeyboardButton(
-                text="👇 𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌 👇", callback_data="ident"
+                text="𝐒𝐞𝐥𝐞𝐜𝐭 𝐘𝐨𝐮𝐫 𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞", callback_data="ident"
             )
         ],
     )
     req = query.from_user.id
     offset = 0
-    btn.append([InlineKeyboardButton(text="↭ ʙᴀᴄᴋ ᴛᴏ ꜰɪʟᴇs ​↭", callback_data=f"next_{req}_{key}_{offset}")])
+    btn.append([InlineKeyboardButton(text="𝐁𝐚𝐜𝐤 𝐓𝐨 𝐅𝐢𝐥𝐞𝐬", callback_data=f"next_{req}_{key}_{offset}")])
 
     await query.edit_message_reply_markup(InlineKeyboardMarkup(btn))
 
@@ -406,7 +407,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         )
 
     search = f"{search} {lang}" 
-    files, total, _, _ = await get_search_results(chat_id, search, max_results=10)
+    files, _, _ = await get_search_results(chat_id, search, max_results=10)
     files = [file for file in files if re.search(lang, file.file_name, re.IGNORECASE)]
     if not files:
         await query.answer("🚫 𝗡𝗼 𝗙𝗶𝗹𝗲 𝗪𝗲𝗿𝗲 𝗙𝗼𝘂𝗻𝗱 🚫", show_alert=1)
