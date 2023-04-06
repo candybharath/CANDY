@@ -363,7 +363,17 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
             show_alert=True,
         )        
     _, search, key = query.data.split("#")
-
+    if int(req) not in [query.from_user.id, 0]:
+        return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
+    try:
+        settings = await get_settings(query.message.chat.id)
+        if 'is_shortlink' in settings.keys():
+            ENABLE_SHORTLINK = settings['is_shortlink']
+        else:
+            await save_group_settings(query.message.chat.id, 'is_shortlink', False)
+            ENABLE_SHORTLINK = False
+        if ENABLE_SHORTLINK == True:
+            if settings['button']:
     btn = [
         [
             InlineKeyboardButton(
@@ -391,7 +401,7 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^fl#"))
 async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
-    _, lang, search, key, offset = query.data.split("#")
+    _, lang, search, key = query.data.split("#")
 
     search = search.replace("_", " ")
     req = query.from_user.id
