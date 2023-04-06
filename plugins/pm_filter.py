@@ -483,7 +483,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton("ꜱᴇɴᴅ ᴀʟʟ", callback_data=f"send_fall#files#{key}#{offset}"),
+                    InlineKeyboardButton(f'{key}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
@@ -493,7 +493,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton("ꜱᴇɴᴅ ᴀʟʟ", callback_data=f"send_fall#files#{key}#{offset}"),
+                    InlineKeyboardButton(f'{key}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
@@ -507,7 +507,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton("ꜱᴇɴᴅ ᴀʟʟ", callback_data=f"send_fall#files#{key}#{offset}"),
+                    InlineKeyboardButton(f'{key}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
@@ -517,11 +517,12 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton("ꜱᴇɴᴅ ᴀʟʟ", callback_data=f"send_fall#files#{key}#{offset}"),
+                    InlineKeyboardButton(f'{key}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
             )
+
 
     btn.insert(1, [
         InlineKeyboardButton("💢 𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐆𝐫𝐨𝐮𝐩𝐬 💢", url=f'http://t.me/{temp.U_NAME}?startgroup=true')
