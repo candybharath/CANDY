@@ -91,12 +91,12 @@ FILE_CHANNEL = int(environ.get('FILE_CHANNEL', 0))
 
 LANGUAGES = ["malayalam", "tamil", "english", "hindi", "telugu", "kannada"]
 
-FILE_PROTECT = {}
-IMPORTED = {}
-HELPABLE = {}
-SELECT = {}
-FILES = {}
-dispatcher = None
+AI = is_enabled((environ.get("AI","True")), False)
+OPENAI_API = environ.get("OPENAI_API","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")
+# LAZY_AI_LOGS = int(environ.get("LAZY_AI_LOGS","")) #GIVE YOUR NEW LOG CHANNEL ID TO STORE MESSAGES THAT THEY SEARCH IN BOT PM.... [ i have added this to keep an eye on the users message, to avoid misuse of LazyPrincess ]
+
+
+
 
 
 # Delete Time
