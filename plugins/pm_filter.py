@@ -546,7 +546,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         btn.append(
             [
                 InlineKeyboardButton("𝐁𝐚𝐜𝐤​", callback_data=f"next_{req}_{key}_{offset}"),
-                InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages")
+                InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"),
                 InlineKeyboardButton("𝐍𝐞𝐱𝐭", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
