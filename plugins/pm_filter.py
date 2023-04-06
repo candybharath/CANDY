@@ -406,8 +406,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         )
 
     search = f"{search} {lang}" 
-    files, n_offset, total, _, _= await get_search_results(chat_id, search, max_results=10)
-#    files, _, _ = await get_search_results(chat_id, search, max_results=10)
+    files, _, _ = await get_search_results(chat_id, search, max_results=10)
     files = [file for file in files if re.search(lang, file.file_name, re.IGNORECASE)]
     if not files:
         await query.answer("🚫 𝗡𝗼 𝗙𝗶𝗹𝗲 𝗪𝗲𝗿𝗲 𝗙𝗼𝘂𝗻𝗱 🚫", show_alert=1)
@@ -528,13 +527,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     ])
     offset = 0
 
-    if 0 < offset <= 10:
-        off_set = 0
-    elif offset == 0:
-        off_set = None
-    else:
-        off_set = offset - 10
-    if n_offset == 0:    
+    
 
 #    btn.append(        [
 #            InlineKeyboardButton(
@@ -543,15 +536,15 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
 #                ),
 #        ])
 
-        btn.append(
-            [
-                InlineKeyboardButton("𝐁𝐚𝐜𝐤​", callback_data=f"next_{req}_{key}_{offset}"),
-                InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"),
-                InlineKeyboardButton("𝐍𝐞𝐱𝐭", callback_data=f"next_{req}_{key}_{n_offset}")
-            ],
-        )
+    btn.append(
+        [
+            InlineKeyboardButton("𝐁𝐚𝐜𝐤​", callback_data=f"next_{req}_{key}_{offset}"),
+            InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1}", callback_data="pages")
+          
+        ],
+    )
 
-        await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
+    await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
 
                 
