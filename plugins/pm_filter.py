@@ -483,7 +483,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f'{key}', 'dupe'),
+                    InlineKeyboardButton(f'{lang.lower()}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
@@ -493,7 +493,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f'{key}', 'dupe'),
+                    InlineKeyboardButton(f'{lang.lower()}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
@@ -507,7 +507,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f'{key}', 'dupe'),
+                    InlineKeyboardButton(f'{lang.lower()}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
@@ -517,7 +517,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             btn.insert(
                 0,
                 [
-                    InlineKeyboardButton(f'{key}', 'dupe'),
+                    InlineKeyboardButton(f'{lang.lower()}', 'dupe'),
                     InlineKeyboardButton("ꜰᴏʀᴍᴀᴛ​", 'format'),
                     InlineKeyboardButton(f'ᴛɪᴘs​ ⚜', 'tips'),
                 ],
