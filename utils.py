@@ -692,7 +692,10 @@ async def check_verification(bot, userid):
     if comp_date<today:
         return False
     else:
-        if comp_time<curr_time:
-            return False
+        if comp_date == today:
+            if comp_time<curr_time:
+                return False
+            else:
+                return True
         else:
             return True
