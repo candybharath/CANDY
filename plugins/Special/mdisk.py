@@ -12,7 +12,7 @@ from plugins.helpers.util import replace_mdisk_link, caption
 from plugins.helpers.config import ADMINS, SOURCE_CODE
 from pyrogram.types import Message
 import re
-from info import CHAT_GROUP
+# from info import CHAT_GROUP
 
 # Private Chat
 
