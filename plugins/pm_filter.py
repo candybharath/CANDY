@@ -12,7 +12,7 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import LANGUAGES, ADMINS, AUTH_CHANNEL, AUTH_USERS, SUPPORT_CHAT_ID, CUSTOM_FILE_CAPTION, MSG_ALRT, PICS, AUTH_GROUPS, P_TTI_SHOW_OFF, GRP_LNK, CHNL_LNK, LOG_CHANNEL, MAX_B_TN, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, IMDB_DLT_TIME, FILE_FORWARD, FILE_CHANNEL, MAIN_CHANNEL, SP, LOGIN_CHANNEL
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, IMDB_DLT_TIME, FILE_FORWARD, FILE_CHANNEL, MAIN_CHANNEL, SP, LOGIN_CHANNEL, CUSTOM_QUERY_CAPTION
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -781,9 +781,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         size = get_size(files.file_size)
         f_caption = files.caption
         settings = await get_settings(query.message.chat.id)
-        if CUSTOM_FILE_CAPTION:
+        if CUSTOM_QUERY_CAPTION:
             try:
-                f_caption = CUSTOM_FILE_CAPTION.format(query.from_user.mention,
+                f_caption = CUSTOM_QUERY_CAPTION.format(query.from_user.mention,
                                                        temp.U_NAME,
                                                        temp.B_NAME,
 #                                                       user_name= '' if username is None else username,
@@ -884,9 +884,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         size = get_size(files.file_size)
         f_caption = files.caption
         settings = await get_settings(query.message.chat.id)
-        if CUSTOM_FILE_CAPTION:
+        if CUSTOM_QUERY_CAPTION:
             try:
-                f_caption = CUSTOM_FILE_CAPTION.format(query.from_user.mention,
+                f_caption = CUSTOM_QUERY_CAPTION.format(query.from_user.mention,
                                                        temp.U_NAME,
                                                        temp.B_NAME,
 #                                                       user_name= '' if username is None else username,
