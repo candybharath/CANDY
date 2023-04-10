@@ -32,7 +32,11 @@ class Database:
             ),
         )
 
-    async def update_verification(self, id, status):
+    async def update_verification(self, id, date, time):
+        status = {
+            'date': str(date),
+            'time': str(time)
+        }
         await self.col.update_one({'id': int(id)}, {'$set': {'verification_status': status}})
 
     async def get_verified(self, id):
