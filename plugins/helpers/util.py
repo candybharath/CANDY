@@ -9,7 +9,7 @@ import re
 from mdisky import Mdisk
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+MDISK_API = "tHRFNVu8CkjkdstzXNsp"
 mdisk = Mdisk(MDISK_API)
 ####################  Mdisk  ####################
 
