@@ -14,6 +14,7 @@ from pyrogram.types import Message
 import re
 # from info import CHAT_GROUP
 
+CHAT_GROUP = "NasraniChatGroup"
 # Private Chat
 
 @Client.on_message(filters.command("m") & filters.chat(CHAT_GROUP) & (filters.channel | filters.group) & filters.reply & filters.incoming)
