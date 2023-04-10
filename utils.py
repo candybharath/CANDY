@@ -645,6 +645,7 @@ async def send_all(bot, userid, files, ident):
 
 
 
+
 async def get_verify_status(userid):
     status = temp.VERIFY.get(userid)
     if not status:
