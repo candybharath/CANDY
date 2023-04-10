@@ -1,7 +1,7 @@
 import hashlib
 import os
 import math
-import urllib.request as urllib
+# import urllib.request as urllib
 
 from io import BytesIO
 from PIL import Image
