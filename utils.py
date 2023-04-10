@@ -1,5 +1,5 @@
 import logging
-from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
+from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, ChatAdminRequired
 from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, SHORTLINK_URL, SHORTLINK_API, LOG_CHANNEL, CUSTOM_FILE_CAPTION, LOGIN_CHANNEL, VERIFY
 from imdb import Cinemagoer 
 import asyncio
@@ -53,9 +53,12 @@ class temp(object):
     SEND_ALL_TEMP = {}
     KEYWORD = {}
 
-async def is_subscribed(bot, query):
+async def is_subscribed(bot, query=None, userid=None):
     try:
-        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        if userid == None and query != None:
+            user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        else:
+            user = await bot.get_chat_member(AUTH_CHANNEL, int(userid))
     except UserNotParticipant:
         pass
     except Exception as e:
