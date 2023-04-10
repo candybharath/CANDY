@@ -3,7 +3,8 @@
 ### This download from saavn.me an unofficial api
 from pyrogram import Client,filters, enums
 import requests,os,wget
-from info import CHAT_GROUP, REQST_CHANNEL, SUPPORT_CHAT_ID, ADMINS
+# from info import CHAT_GROUP, REQST_CHANNEL, SUPPORT_CHAT_ID, ADMINS
+
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import asyncio
 from info import LOG_CHANNEL
@@ -11,6 +12,7 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('💖🇮🇳✨ Made By �
 A = """{} with user id:- {} used /saavn command."""
 B = """{} with user id:- {} used /vsaavn command."""
 
+# API = "https://apibu.herokuapp.com/api/y-images?query="
 
 START_MESSAGE = """
 𝐇𝐞𝐥𝐥𝐨 <a href='tg://settings'>𝐓𝐡𝐚𝐧𝐤 𝐘𝐨𝐮⚡️</a>
