@@ -16,7 +16,7 @@ from datetime import datetime
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 import logging
 logger = logging.getLogger(__name__)
-from info import IMDB, PUBLIC_FILE_STORE
+from info import IMDB
 
 
 
@@ -49,15 +49,10 @@ POST_LINK = "http://t.me/nasrani_update"
 
 
 
-async def allowed(_, __, message):
-    if PUBLIC_FILE_STORE:
-        return True
-    if message.from_user and message.from_user.id in ADMINS:
-        return True
-    return False
 
 
-@Client.on_message(filters.command(['post', 'channelpost']) & filters.create(allowed))            
+
+@Client.on_message(filters.channel)            
 async def start_message(client, message):    
     searchh = message.text 
 # @Client.on_message(filters.private & filters.forwarded)
