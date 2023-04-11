@@ -2,7 +2,7 @@ import os
 import requests
 import weasyprint
 import urllib.request
-from presets import Presets
+from plugins.modules.extra.presets import Presets
 from bs4 import BeautifulSoup
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
@@ -11,7 +11,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 if bool(os.environ.get("ENV", False)):
     from sample_config import Config
 else:
-    from config import Config
+    from plugins.modules.extra.config import Config
 
 # -------------------------- Bot Configuration ---------------------------------------------- #
 Bot = Client(
