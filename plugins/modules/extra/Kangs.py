@@ -11,6 +11,8 @@ import telegram
 import logging
 import json
 
+from pyrogram import filters, Client
+
 from typing import Optional, List
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram import TelegramError
