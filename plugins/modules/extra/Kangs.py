@@ -175,7 +175,7 @@ async def sticker_image(_, message: Message):
 async def kang(client, message: Message):
     user_id = message.from_user.id
     message_id = message.message_id
-    name_format = f"StarkBots_{user_id}_{message_id}
+    name_format = f"StarkBots_{user_id}_{message_id}"
     BOT_USERNAME = client.username
     if not message.reply_to_message:
         return await message.reply_text("Reply to a sticker/image to kang it.")
