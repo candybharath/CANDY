@@ -119,5 +119,4 @@ async def cancel_spam(event):
       pass
     return await event.respond('__Stopped.__')
 
-print(">> BOT STARTED <<")
-client.run_until_disconnected()
+
