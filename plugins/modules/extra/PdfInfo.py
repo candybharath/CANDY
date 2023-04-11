@@ -2,13 +2,13 @@
 import os
 from os import error
 import pyrogram
-# import PyPDF2
+import PyPDF2
 from info import LOG_CHANNEL
 from pyrogram import Client as Koshik
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from pypdf2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfFileReader, PdfFileWriter
 
 BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('💖🇮🇳✨ Made By ✨🇮🇳💖', url='https://t.me/nasrani_update')]])
 A = """{} with user id:- {} used /pdfinfo command."""
@@ -25,7 +25,7 @@ async def info(bot, message):
               await message.reply_to_message.download(pdf_path)  
               await txt.edit("**Downloaded File✅✨**")
               pdf = open(pdf_path,'rb')
-              pdf_reader = pypdf2.PdfFileReader(pdf) # PDF READER
+              pdf_reader = PyPDF2.PdfFileReader(pdf) # PDF READER
               await txt.edit("**Getting Number of Pages....😎😎**")
               num_of_pages = pdf_reader.getNumPages()
               await txt.edit(f"**Found {num_of_pages} Page(s)...😇**")
