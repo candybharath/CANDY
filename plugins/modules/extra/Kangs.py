@@ -15,7 +15,7 @@ from pyrogram.file_id import FileId
 from typing import List
 
 from pyrogram import Client, errors, raw
-    
+from telegram import Update, Bot    
 
 
 
