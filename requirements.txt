@@ -43,4 +43,4 @@ pyshorteners
 gTTS
 
 PyPDF2==3.0.0
-
+pypdf2==3.0.1
