@@ -123,3 +123,37 @@ async def kang(bot: Bot, update: Update, args: List[str]):
         msg.reply_text(packs, parse_mode=ParseMode.MARKDOWN)
     if os.path.isfile("kangsticker.png"):
         os.remove("kangsticker.png")
+
+
+
+
+def makepack_internal(msg, user, png_sticker, emoji, bot, packname, packnum):
+    name = user.first_name
+    name = name[:50]
+    try:
+        extra_version = " " + str(packnum) if packnum > 0 else ""
+        success = bot.create_new_sticker_set(user.id, packname, f"{name}s kang pack" + extra_version,
+                                             png_sticker=png_sticker,
+                                             emojis=emoji)
+    except TelegramError as e:
+        print(e)
+        if (
+            e.message
+            == "Internal Server Error: created sticker set not found (500)"
+        ):
+            msg.reply_text("Sticker pack successfully created. Get it [here](t.me/addstickers/%s)" % packname,
+                   parse_mode=ParseMode.MARKDOWN)
+        elif e.message == "Peer_id_invalid":
+            msg.reply_text("Contact me in PM first.", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
+                text="Start", url=f"t.me/{bot.username}")]]))
+        elif e.message == "Sticker set name is already occupied":
+            msg.reply_text("Your pack can be found [here](t.me/addstickers/%s)" % packname,
+                           parse_mode=ParseMode.MARKDOWN)
+        return
+
+    if success:
+        msg.reply_text("Sticker pack successfully created. Get it [here](t.me/addstickers/%s)" % packname,
+                       parse_mode=ParseMode.MARKDOWN)
+    else:
+        msg.reply_text("Failed to create sticker pack. Possibly due to blek mejik.")
+
