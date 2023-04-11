@@ -22,7 +22,8 @@ from pyrogram import Client, errors, raw
 
 
 @Client.on_message(filters.command("get_sticker"))
-async def(bot: Bot, update: Update, args: List[str]):
+async def(bot, update):
+    args = message.text.split()
     msg = update.effective_message
     user = update.effective_user
     packnum = 0
