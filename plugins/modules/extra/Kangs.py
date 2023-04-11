@@ -1,21 +1,11 @@
-import imghdr, os
-from asyncio import gather
-from traceback import format_exc
-from pyrogram import filters, Client
-from pyrogram.types import *
-from pyrogram.errors import *
-
-
-import math
+import hashlib
 import os
+import math
+import urllib.request as urllib
 
+from io import BytesIO
 from PIL import Image
-from pyrogram import Client, raw
-from pyrogram.file_id import FileId
-from typing import List
-
-from pyrogram import Client, errors, raw
-from telegram import Update, Bot    
+from pyrogram import Client
 
 import telegram
 import logging
@@ -36,6 +26,16 @@ logger = logging.getLogger()
 
 def getConfig(name: str):
     return os.environ[name]
+
+try:
+    BOT_TOKEN = getConfig('BOT_TOKEN')
+except KeyError as e:
+    LOGGER.error("BOT_TOKEN env variables missing! Exiting now")
+    exit(1)
+
+updater = telegram.ext.Updater(token=BOT_TOKEN)
+bot = updater.bot
+dispatcher = updater.dispatcher
 
 
 
