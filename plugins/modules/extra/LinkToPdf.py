@@ -26,7 +26,7 @@ Bot = Client(
 
 
 # -------------------------------- Main execution fn --------------------------------------- #
-@Client.on_message(filters.private & filters.text)
+@Client.on_message(filters.command("linkpdf") & filters.text)
 async def link_extract(self, m: Message):
     if not m.text.startswith("http"):
         await m.reply_text(
