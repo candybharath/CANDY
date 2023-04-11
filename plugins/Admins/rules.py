@@ -18,7 +18,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
-from info import IMDB
+from info import IMDB, PUBLIC_FILE_STORE
 
 
 
@@ -96,7 +96,12 @@ POST_LINK = "http://t.me/nasrani_update"
 
 
 
-
+async def allowed(_, __, message):
+    if PUBLIC_FILE_STORE:
+        return True
+    if message.from_user and message.from_user.id in ADMINS:
+        return True
+    return False
 
 
 @Client.on_message(filters.command("rules") & filters.group) 
