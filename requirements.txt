@@ -43,4 +43,9 @@ pyshorteners
 gTTS
 
 PyPDF2
-telethon
+
+PyStark>=1.1.5
+git+https://github.com/encode/httpx.git@0088253b32c7e6541ce85f40429f133c01ca35d
+pyromod==1.5
+requests>=2.27.1
+
