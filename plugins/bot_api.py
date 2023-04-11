@@ -2,7 +2,7 @@ import httpx
 import typing
 import requests
 from pystark import Message
-from database import database
+from database import videosticker
 from pystark.config import ENV
 from plugins.exceptions import TooManyRequests, AlreadyOccupied, UnknownException, StickersTooMuch, StickerPackInvalid
 
