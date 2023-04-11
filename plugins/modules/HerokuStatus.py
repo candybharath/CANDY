@@ -6,7 +6,7 @@ import time
 from info import ADMINS
 import heroku3
 import requests
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from database.users_chats_db import db
 
 #=====================================================
@@ -98,5 +98,5 @@ async def bot_status_cmd(client,message):
         f"{quota_details}"
         f"{disk}",
         quote=True,
-        parse_mode="md"
+        parse_mode=enums.ParseMode.MARKDOWN
     )
