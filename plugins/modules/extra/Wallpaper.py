@@ -34,3 +34,26 @@ async def wall(_, message: Message):
         await m.edit_text(
             f"`Wallpaper not found for : `{text}`",
         )
+
+
+
+
+
+@Client.on_message(filters.command(["wal", "wp"]))
+async def wall(bot, message):
+    
+    try:
+        url = requests.get(f"https://apibu.herokuapp.com/api/y-images?query={text}").json()["results"]
+        ran = random.randint(0, 3)
+        await message.reply_photo(
+            photo=url,
+            caption=f"༊ **ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ :** {message.from_user.mention}",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton("ʟɪɴᴋ", url=url[ran]["imageUrl"])],
+                ]
+            ),
+        )
+        
+    except Exception as e:
+        
