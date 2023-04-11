@@ -17,7 +17,25 @@ from typing import List
 from pyrogram import Client, errors, raw
 from telegram import Update, Bot    
 
+import telegram
+import logging
+import json
 
+from typing import Optional, List
+from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import TelegramError
+from telegram import Update, Bot
+from telegram.ext import CommandHandler, run_async, Updater, Handler, InlineQueryHandler
+from telegram.utils.helpers import escape_markdown
+
+from telegram import Message, Chat, MessageEntity, InlineQueryResultArticle
+from os import path
+from telegram import ParseMode
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger = logging.getLogger()
+
+def getConfig(name: str):
+    return os.environ[name]
 
 
 
