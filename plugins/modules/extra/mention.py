@@ -6,13 +6,33 @@ from telethon.tl.types import ChannelParticipantCreator
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.errors import UserNotParticipantError
 
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton 
+# from pyrogram.types import CallbackQuery
+import random
+import os
+from info import SP
+from Script import script
+import os
+from pyrogram import Client, filters, enums
+from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
+from info import IMDB_TEMPLATE, LOGIN_CHANNEL, ADMINS, SP
+from utils import extract_user, get_file_id, get_poster, last_online
+from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings
+
+import time
+from datetime import datetime
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)
+
 from pyrogram import Client
 
 
 
 
   
-@Client.on(events.NewMessage(pattern="^/mentionall ?(.*)"))
+@Client.on_message(filters.command(["mention"]))
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
@@ -74,16 +94,4 @@ async def mentionall(event):
     spam_chats.remove(chat_id)
   except:
     pass
-
-@Client.on(events.NewMessage(pattern="^/cancel$"))
-async def cancel_spam(event):
-  if not event.chat_id in spam_chats:
-    return await event.respond('__There is no proccess on going...__')
-  else:
-    try:
-      spam_chats.remove(event.chat_id)
-    except:
-      pass
-    return await event.respond('__Stopped.__')
-
 
