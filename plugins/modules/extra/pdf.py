@@ -5,7 +5,7 @@ import logging
 import convertapi
 from PIL import Image
 from time import sleep
-from configs import Config, Msgs
+
 from pyrogram import Client, filters, enums
 from pyrogram.types import ForceReply
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -19,13 +19,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 # PYROGRAM INSTANCE
-bot = Client(
-    "pyroPdf",
-    parse_mode=enums.ParseMode.MARKDOWN,
-    api_id = Config.API_ID,
-    api_hash = Config.API_HASH,
-    bot_token = Config.BOT_TOKEN
-)
+
 
 
 # GLOBAL VARIABLES
