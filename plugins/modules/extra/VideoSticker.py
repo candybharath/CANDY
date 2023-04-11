@@ -1,6 +1,6 @@
 import os
 from database import videosticker
-from plugins.helpers import Helpers
+from plugins.helpers.Helper import Helpers
 from pystark import Stark, Message, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
