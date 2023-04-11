@@ -108,6 +108,12 @@ BATCH_LINK = environ.get('BATCH_LINK',"https://t.me/nasrani_update")
 # Delete Time
 IMDB_DLT_TIME = int(environ.get('IMDB_DLT_TIME', 600))
 
+
+
+# heroku
+HRK_APP_NAME = environ.get('HRK_APP_NAME', 'mybots')
+HRK_API = environ.get('HRK_API', '0')
+
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
 LOG_STR += ("P_TTI_SHOW_OFF found , Users will be redirected to send /start to Bot PM instead of sending file file directly\n" if P_TTI_SHOW_OFF else "P_TTI_SHOW_OFF is disabled files will be send in PM, instead of sending start.\n")
