@@ -2,7 +2,7 @@
 import os
 from os import error
 import pyrogram
-import PyPDF2
+# import PyPDF2
 from info import LOG_CHANNEL
 from pyrogram import Client as Koshik
 from pyrogram import filters
