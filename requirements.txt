@@ -45,6 +45,7 @@ pyshorteners
 gTTS
 
 PyPDF2
-
+urldl
+check-url
 
 
