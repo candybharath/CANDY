@@ -42,4 +42,4 @@ pyshorteners
 
 gTTS
 
-weasyprint
+
