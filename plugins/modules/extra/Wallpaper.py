@@ -4,6 +4,7 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
+import os
 
 
 
@@ -17,7 +18,7 @@ async def wall(_, message: Message):
         return await message.reply_text("`Please give some query to search.`")
     m = await message.reply_text("`Searching for wallpapers...`")
     try:
-        url = requests.get(f"https://api.safone.me/wall?query={text}").json()["results"]
+        url = requests.get(f"https://apibu.herokuapp.com/api/y-images?query={text}").json()["results"]
         ran = random.randint(0, 3)
         await message.reply_photo(
             photo=url[ran]["imageUrl"],
