@@ -2,7 +2,7 @@ import os
 import emoji
 import asyncio
 from pystark import filters
-from database import database
+from database import videosticker
 from plugins.bot_api import BotAPI
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
