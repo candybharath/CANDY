@@ -176,7 +176,7 @@ async def _callbacks(bot: Client, query: CallbackQuery):
             ]])
         )
     elif query in ["pyrogram", "telethon"]:
-        await query.answer()
+        
         try:
             if query == "pyrogram":
                 await generate_session(bot, query.message)
