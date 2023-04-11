@@ -1,5 +1,5 @@
 import os
-import urldl
+# import urldl
 import check_url
 from dotenv import load_dotenv
 from plugins.helpers.gofile import uploadFile
