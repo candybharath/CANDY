@@ -44,17 +44,8 @@ async def wall(bot, message):
     
     try:
         url = requests.get(f"https://apibu.herokuapp.com/api/y-images?query={text}").json()["results"]
-        ran = random.randint(0, 3)
+        
         await message.reply_photo(
             photo=url,
-            caption=f"༊ **ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ :** {message.from_user.mention}",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [InlineKeyboardButton("ʟɪɴᴋ", url=url[ran]["imageUrl"])],
-                ]
-            ),
-        )
-     
-    
-        
-    
+            caption=f"༊ **ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ :** {message.from_user.mention}")
+            
