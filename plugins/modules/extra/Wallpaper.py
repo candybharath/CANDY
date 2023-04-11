@@ -55,9 +55,6 @@ async def wall(bot, message):
             ),
         )
      
-    except Exception as e:
-        await m.edit_text(
-            f"`Wallpaper not found for : `{text}`",
-        )
+    
         
     
