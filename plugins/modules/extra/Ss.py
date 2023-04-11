@@ -155,20 +155,20 @@ async def cancelled(msg):
 @Client.on_callback_query()
 async def _callbacks(bot: Client, query: CallbackQuery):
     user = await bot.get_me()
-    # user_id = callback_query.from_user.id
+    # user_id = query.from_user.id
     mention = query.from_user.mention
-    query = callback_query.data.lower()
+    query = query.data.lower()
     if query.startswith("home"):
         if query == 'home':
-            chat_id = callback_query.from_user.id
-            message_id = callback_query.message.message_id
+            chat_id = query.from_user.id
+            message_id = query.message.message_id
             await bot.edit_message_text(
                 chat_id=chat_id,
                 message_id=message_id,
                 text="hy",
             )
     elif query == "generate":
-        await callback_query.message.reply(
+        await query.message.reply(
             "Please choose the python library you want to generate string session for",
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton("Pyrogram", callback_data="pyrogram"),
@@ -176,11 +176,11 @@ async def _callbacks(bot: Client, query: CallbackQuery):
             ]])
         )
     elif query in ["pyrogram", "telethon"]:
-        await callback_query.answer()
+        await query.answer()
         try:
             if query == "pyrogram":
-                await generate_session(bot, callback_query.message)
+                await generate_session(bot, query.message)
             else:
-                await generate_session(bot, callback_query.message, telethon=True)
+                await generate_session(bot, query.message, telethon=True)
         except Exception as e:
-            await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
+            await query.message.reply(ERROR_MESSAGE.format(str(e)))
