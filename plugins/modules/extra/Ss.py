@@ -156,7 +156,7 @@ async def cancelled(msg):
 async def _callbacks(bot: Client, callback_query: CallbackQuery):
     user = await bot.get_me()
     # user_id = callback_query.from_user.id
-    mention = user["mention"]
+    mention = query.from.user_mention
     query = callback_query.data.lower()
     if query.startswith("home"):
         if query == 'home':
