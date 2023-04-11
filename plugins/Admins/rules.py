@@ -208,7 +208,7 @@ async def start_message(client, message):
 
 
 
-@Client.on_message(filters.channel & filters.command("post") & filters.user(ADMINS) & filters.reply)            
+@Client.on_message(filters.command(['post', 'channelpost']) & filters.create(allowed))            
 async def start_message(client, message):    
     searchh = message.text 
 # @Client.on_message(filters.private & filters.forwarded)
