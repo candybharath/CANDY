@@ -9,9 +9,9 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 
 
 if bool(os.environ.get("ENV", False)):
-    from sample_config import Config
+    from plugins.helpers.sample_config import Config
 else:
-    from plugins.helpers.config import Config
+    from config import Config
 
 # -------------------------- Bot Configuration ---------------------------------------------- #
 Bot = Client(
