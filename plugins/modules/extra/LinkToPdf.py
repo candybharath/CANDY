@@ -16,8 +16,8 @@ else:
 # -------------------------- Bot Configuration ---------------------------------------------- #
 Bot = Client(
     "link2PdfBot",
-    bot_token=Config.TG_BOT_TOKEN,
-    api_id=Config.APP_ID,
+    bot_token=Config.BOT_TOKEN,
+    api_id=Config.API_ID,
     api_hash=Config.API_HASH,
 )
 
