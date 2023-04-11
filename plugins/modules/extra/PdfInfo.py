@@ -8,6 +8,8 @@ from pyrogram import Client as Koshik
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from PyPDF2 import PdfFileReader, PdfFileWriter
+
 BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('💖🇮🇳✨ Made By ✨🇮🇳💖', url='https://t.me/nasrani_update')]])
 A = """{} with user id:- {} used /pdfinfo command."""
 
