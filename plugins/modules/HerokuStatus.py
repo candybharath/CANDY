@@ -12,14 +12,14 @@ from database.users_chats_db import db
 #=====================================================
 BOT_START_TIME = time.time()
 CMD = ['.', '/']
-HEROKU_API_KEY = (os.environ.get("HEROKU_API_KEY", ""))
+HRK_API = (os.environ.get("HRK_API", ""))
 #=====================================================
 
 @Client.on_message(filters.private & filters.user(ADMINS) & filters.command("dyno", CMD))         
 async def bot_status_cmd(client,message):
-    if HEROKU_API_KEY:
+    if HRK_API:
         try:
-            server = heroku3.from_key(HEROKU_API_KEY)
+            server = heroku3.from_key(HRK_API)
 
             user_agent = (
                 'Mozilla/5.0 (Linux; Android 10; SM-G975F) '
@@ -29,7 +29,7 @@ async def bot_status_cmd(client,message):
             accountid = server.account().id
             headers = {
             'User-Agent': user_agent,
-            'Authorization': f'Bearer {HEROKU_API_KEY}',
+            'Authorization': f'Bearer {HRK_API}',
             'Accept': 'application/vnd.heroku+json; version=3.account-quotas',
             }
 
