@@ -18,18 +18,7 @@ bot_token = os.environ.get("BOT_TOKEN")
 client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
-@client.on(events.NewMessage(pattern="^/startq$"))
-async def start(event):
-  await event.reply(
-    "__**I'm MentionAll Bot**, I can mention almost all members in group or channel 👻\nClick **/help** for more information__\n\n Follow [@AnjanaMadu](https://github.com/AnjanaMadu) on Github",
-    link_preview=False,
-    buttons=(
-      [
-        Button.url('📣 Channel', 'https://t.me/harp_tech'),
-        Button.url('📦 Source', 'https://github.com/AnjanaMadu/MentionAllBot')
-      ]
-    )
-  )
+
 
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
