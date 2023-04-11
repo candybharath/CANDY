@@ -22,8 +22,8 @@ from pyrogram import Client, errors, raw
 
 
 @Client.on_message(filters.command("get_sticker"))
-async def kang(bot, update):
-    args = message.text.split()
+async def kang(bot: Bot, update: Update, args: List[str]):
+    
     msg = update.effective_message
     user = update.effective_user
     packnum = 0
