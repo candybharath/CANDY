@@ -44,5 +44,7 @@ gTTS
 
 PyPDF2
 
-
+git+https://github.com/itz-jeol/pyrogram
+ 
+telethon
 
