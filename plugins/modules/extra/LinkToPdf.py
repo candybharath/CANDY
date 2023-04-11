@@ -16,37 +16,24 @@ else:
 # -------------------------- Bot Configuration ---------------------------------------------- #
 Bot = Client(
     "link2PdfBot",
-    bot_token=Config.BOT_TOKEN,
-    api_id=Config.API_ID,
+    bot_token=Config.TG_BOT_TOKEN,
+    api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
 )
 
 
 # ------------------------------ Start Command ---------------------------------------------- #
-@Bot.on_message(filters.private & filters.command(["start", "help"]))
-async def start_bot(self, m: Message):
-    await m.reply_text(
-        Presets.START_TXT.format(m.from_user.first_name),
-        reply_to_message_id=m.message_id,
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("🛡 Support Chat", url="t.me/rmprojects"),
-                 InlineKeyboardButton("🎯 Source", url="https://github.com/m4mallu")]
-            ]
-        )
-    )
 
 
 # -------------------------------- Main execution fn --------------------------------------- #
-@Client.on_message(filters.command("linkpdf") & filters.text)
+@Client.on_message(filters.private & filters.text)
 async def link_extract(self, m: Message):
     if not m.text.startswith("http"):
         await m.reply_text(
             Presets.INVALID_LINK_TXT,
             reply_to_message_id=m.message_id,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Close", callback_data="close_btn")]]
+                [[InlineKeyboardButton("Close", callback_data="close_data")]]
             )
         )
         return
@@ -103,5 +90,3 @@ async def link_extract(self, m: Message):
 
 
 # --------------------------------- Close Button Call Back --------------------------------- #
-
-
