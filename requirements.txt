@@ -43,4 +43,4 @@ pyshorteners
 gTTS
 
 PyPDF2
-
+telethon
