@@ -41,3 +41,5 @@ python-decouple
 pyshorteners
 
 gTTS
+
+weasyprint
