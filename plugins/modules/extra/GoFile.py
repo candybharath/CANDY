@@ -2,7 +2,7 @@ import os
 import urldl
 import check_url
 from dotenv import load_dotenv
-from gofile import uploadFile
+from plugins.helpers.gofile import uploadFile
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
