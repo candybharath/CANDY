@@ -50,4 +50,4 @@ ytthumb
 YoutubeTags
 
 
-rembg==2.0.32
+
