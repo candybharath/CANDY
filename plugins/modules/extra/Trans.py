@@ -74,6 +74,7 @@ def capture_err(func):
 
 
 @Client.on_message(filters.command("t"))
+@capture_err
 async def tr(_, message):
     if len(message.command) != 2:
         return await message.reply_text("/tr [LANGUAGE_CODE]")
