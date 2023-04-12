@@ -24,9 +24,9 @@ async def video(client, message):
         reply_markup=reply_markup,
         disable_web_page_preview=True,
         quote=True
-        )
-        except Exception as error:
-            print(error)
+    )
+    except Exception as error:
+        print(error)
     await message.reply_text(
     text=details,
     reply_markup=reply_markup,
