@@ -879,3 +879,26 @@ async def shortlink(bot, message):
     await save_group_settings(grpid, 'shortlink_api', api)
     await save_group_settings(grpid, 'is_shortlink', True)
     await reply.edit_text(f"<b>Successfully added shortlink API for {title}.\n\nCurrent Shortlink Website: <code>{shortlink_url}</code>\nCurrent API: <code>{api}</code></b>")
+
+
+
+
+@Client.on_message(filters.command('set'))
+async def shortlink(bot, message):
+    start_t = time.time()
+    rm = await message.reply_text("...........")
+    end_t = time.time()
+    time_taken_s = (end_t - start_t) * 1000
+    btn = [[
+        InlineKeyboardButton("Oᴘᴇɴ Hᴇʀᴇ ↓", callback_data=f"opnsetgrp#{grp_id}"),
+        InlineKeyboardButton("Oᴘᴇɴ Iɴ PM ⇲", callback_data=f"opnsetpm#{grp_id}")
+    ]]
+    reply_markup = InlineKeyboardMarkup(buttons)
+    await message.reply_text(
+    text=f"𝖯𝗂𝗇𝗀!\n{time_taken_s:.3f} ms",
+    reply_markup=InlineKeyboardMarkup(btn),
+    disable_web_page_preview=True,
+    parse_mode=enums.ParseMode.HTML,
+    reply_to_message_id=message.id   
+    await rm.delete()
+
