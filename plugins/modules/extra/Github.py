@@ -5,7 +5,7 @@ import pyrogram
 import json
 from info import LOG_CHANNEL
 from pyrogram import Client as Koshik
-from pyrogram import filters
+from pyrogram import filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 
@@ -17,7 +17,7 @@ async def getgithub(bot, message):
     if len(message.command) != 2:
         await message.reply_text("/github Username \n\n Like:- `/github hkrrish`", quote=True)
         return
-    await message.reply_chat_action("typing")
+    await message.reply_chat_action("enums.ChatAction.TYPING")
     k = await message.reply_text("**Processing...⏳**", quote=True)    
     un = message.text.split(None, 1)[1]
     URL = f'https://api.github.com/users/{un}'
