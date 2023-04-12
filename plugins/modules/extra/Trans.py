@@ -5,8 +5,8 @@ from pyrogram.types import (
     InlineKeyboardMarkup
 )
 
-from plugins.helper.database import find , insert
-from plugins.helper.list import list
+from plugins.helpers.database import find , insert
+from plugins.helpers.list import list
 from Script import script
 from info import SP
 
