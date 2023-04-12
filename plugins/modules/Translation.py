@@ -7,7 +7,7 @@ from plugins.helpers.database import find_one
 
 
 
-@Client.on_message(filters.command(["tr"]))
+@Client.on_message(filters.command(["t"]))
 async def left(client,message):
 	if (message.reply_to_message):
 		try:
