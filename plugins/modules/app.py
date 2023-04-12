@@ -30,14 +30,14 @@ async def video(client, message):
         reply_markup = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         ) 
-    try:
+        try:
        
-        await message.reply_text(
-        text=result["title"],
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
-         except Exception as error:
+            await message.reply_text(
+            text=result["title"],
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            quote=True
+        )
+        except Exception as error:
             print(error)
     await message.answer(answers)   
