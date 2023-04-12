@@ -11,7 +11,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from requests.utils import requote_uri
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import *
 
 Bot = Client(
