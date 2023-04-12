@@ -34,10 +34,10 @@ async def getgithub(bot, message):
     await message.reply_chat_action(enums.ChatAction.TYPING)
     k = await message.reply_text("**Processing...⏳**", quote=True)    
     un = message.text.split(None, 1)[1]
-    URL = f'https://api.abirhasan.wtf/google/search/{un}'
+    r = requests.get(f"https://api.abirhasan.wtf/google?query={args}&page=2&limit=2").json()
     
-    request = requests.get(URL)
-    result = request.json()
+    request = r.get(URL)
+    result = r.json()
     username = result['login']
     url = result['html_url']
     name = result['name']
