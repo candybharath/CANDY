@@ -9,13 +9,15 @@ def share_link(text: str) -> str:
 
 @Client.on_message(filters.command(["share", "sharetext", "st", "stxt", "shtxt", "shtext"]))
 async def share_text(client, message):
-    reply = message.reply_to_message
+    text = message.text
+    id = message.message_id
+    reply = message.reply_to_message.message.text
     reply_id = message.reply_to_message.message_id if message.reply_to_message else message.message_id
     input_split = message.text.split(None, 1)
     if len(input_split) == 2:
         input_text = input_split[1]
-    elif reply and (reply.text or reply.caption):
-        input_text = reply.text or reply.caption
+    elif text and (message.text or id.caption):
+        input_text = message.text or id.caption
     else:
         await message.reply_text(
             text=f"**Notice:**\n\n1. Reply Any Messages.\n2. No Media Support\n\n**Any Question Join Support Chat**",
@@ -27,7 +29,7 @@ async def share_text(client, message):
                     ]                
                 ]
             ),
-            reply_to_message_id=reply_id
+            message.message_id=id
         )
         return
     await message.reply_text(share_link(input_text), reply_to_message_id=reply_id)
