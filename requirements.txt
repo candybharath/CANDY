@@ -35,7 +35,7 @@ doodstream
 unshortenit
 mdisky
 
-googletrans==3.1.0a0
+googletrans==4.0.0-rc1
 
 python-math
 python-decouple
