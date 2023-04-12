@@ -19,7 +19,7 @@ async def left(client,message):
 	if (message.reply_to_message):
 		try:
 			lgcd = message.text.split("/tr")
-                        text = (HELLO)
+                        text =(HELLO)
 			lg_cd = lgcd[1].lower().replace(" ", "")
 			tr_text = message.reply_to_message.text
 			translator = Translator()
