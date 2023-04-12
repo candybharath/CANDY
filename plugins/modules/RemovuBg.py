@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
@@ -38,7 +38,20 @@ BUTTONS = InlineKeyboardMarkup(
 
 @Client.on_message(filters.command("bg") & (filters.photo | filters.video | filters.document))
 async def remove_background(bot, update):
-    
+    if not (REMOVEBG_API or UNSCREEN_API):
+        await update.reply_text(
+            text="Error :- API not found",
+            quote=True,
+            disable_web_page_preview=True,
+            reply_markup=ERROR_BUTTONS
+        )
+        return
+    await update.reply_chat_action(enums.ChatAction.TYPING)
+    message = await update.reply_text(
+        text="Processing",
+        quote=True,
+        disable_web_page_preview=True
+    )
     try:
         new_file_name = f"./{str(update.from_user.id)}"
         if (
@@ -100,7 +113,7 @@ async def remove_background(bot, update):
         except:
             pass
     except Exception as error:
-        await message.reply_text(
+        await message.edit_text(
             text=f"Error:- `{error}`",
             disable_web_page_preview=True,
             reply_markup=ERROR_BUTTONS
