@@ -46,6 +46,6 @@ gTTS
 
 PyPDF2
 
-
+play_scraper
 
 
