@@ -25,11 +25,11 @@ async def getgithub(bot, message):
         return
     await message.reply_chat_action(enums.ChatAction.TYPING)
     k = await message.reply_text("**Processing...⏳**", quote=True)    
-    un = message.text.split(None, 1)[1]
+    args = message.text.split(None, 1)[1]
     
-    URL = f'https://play.google.com/search/{un}'
+    URL = f'https://play.google.com/search/songs?query={args}&page=2&limit=2").json()
     request = play_scraper.search(URL)
-    result = request.json()
+    result = URL.json()
     username = result['title']
     url = result['title']
     name = result['name']
