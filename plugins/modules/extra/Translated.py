@@ -11,16 +11,13 @@ from Script import script
 from info import SP
 
 
-HELLO = """
-\n OK
-"""
+
 @Client.on_message(filters.command(["tr"]))
 async def left(client,message):
 	if (message.reply_to_message):
 		try:
-			lgcd = message.text.split("/tr")
-                        text = HELLO
-			lg_cd = lgcd[1].lower().replace(" ", "")
+			lgcd = message.text.split("/tr")                  
+			lg_cd = message.text
 			tr_text = message.reply_to_message.text
 			translator = Translator()
 			translation = translator.translate(tr_text,text,dest = lg_cd)
