@@ -46,7 +46,7 @@ class evamaria(Client):
             ":memory:",
             plugins=dict(root=f"{name}/plugins"),
             workdir=TMP_DOWNLOAD_DIRECTORY,
-            api_id=APP_ID,
+            api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
             parse_mode="html",
