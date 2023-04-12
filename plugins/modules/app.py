@@ -14,17 +14,15 @@ Bot = Client(
 
 @Client.on_message(filters.command('app') & filters.text)
 async def video(client, message):
-    app = ["title"]
-    results = play_scraper.search(message)
-    answers = []
-    for result in results:
-        details = format(result["title"])
-        reply_markup = InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
-        ) 
-        try:
+    
+    results = play_scraper.search(app)    
+    details = format(results["title"])
+    reply_markup = InlineKeyboardMarkup(
+    [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
+    ) 
+    try:
        
-            await message.reply_text(
+        await message.reply_text(
             text=details,
             reply_markup=reply_markup,
             disable_web_page_preview=True,
