@@ -28,7 +28,14 @@ BUTTONS = InlineKeyboardMarkup(
 )
 
 
-
+ERROR_BUTTONS = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton('Help', callback_data='help'),
+            InlineKeyboardButton('Close', callback_data='close')
+        ]
+    ]
+)
 
 
 
