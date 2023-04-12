@@ -7,7 +7,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 load_dotenv()
 
-REMOVEBG_API = "xncwdQU8EBAW7KQK9fK9CgTK"
+REMOVEBG_API = "z6M8qGTPj4fHtgKfvcrxdNTX"
 UNSCREEN_API = "1pWrEXF6pTmNyuMjbgghvbW4"
 
 Bot = Client(
@@ -43,17 +43,17 @@ ERROR_BUTTONS = InlineKeyboardMarkup(
 
 
 
-@Client.on_message(filters.command("bg") & (filters.photo | filters.video | filters.document))
+@Client.on_message(filters.private & (filters.photo | filters.video | filters.document) & filters.command(["remove_background"]))
 async def remove_background(bot, update):
-    if not (REMOVEBG_API or UNSCREEN_API):
+    if not REMOVEBG_API:
         await update.reply_text(
-            text="Error :- API not found",
+            text="Error :- Remove BG Api is error",
             quote=True,
             disable_web_page_preview=True,
             reply_markup=ERROR_BUTTONS
         )
         return
-    await update.reply_chat_action(enums.ChatAction.TYPING)
+    await update.reply_chat_action("typing")
     message = await update.reply_text(
         text="Processing",
         quote=True,
@@ -61,10 +61,8 @@ async def remove_background(bot, update):
     )
     try:
         new_file_name = f"./{str(update.from_user.id)}"
-        if (
-            update.photo or (
-                update.document and "image" in update.document.mime_type
-            )
+        if update.photo or (
+            update.document and "image" in update.document.mime_type
         ):
             new_file_name += ".png"
             file = await update.download()
@@ -73,10 +71,8 @@ async def remove_background(bot, update):
                 disable_web_page_preview=True
             )
             new_document = removebg_image(file)
-        elif (
-            update.video or (
-                update.document and "video" in update.document.mime_type
-            )
+        elif update.video or (
+            update.document and "video" in update.document.mime_type
         ):
             new_file_name += ".webm"
             file = await update.download()
@@ -116,7 +112,7 @@ async def remove_background(bot, update):
             quote=True
         )
         try:
-            os.remove(new_file_name)
+            os.remove(file)
         except:
             pass
     except Exception as error:
@@ -142,6 +138,8 @@ def removebg_video(file):
         files={"video_file": open(file, "rb")},
         headers={"X-Api-Key": UNSCREEN_API}
     )
+
+
 
 
 
