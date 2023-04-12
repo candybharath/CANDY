@@ -27,6 +27,7 @@ async def video(client, message):
     except Exception as e:
         await pak.edit(str(e))
         return
+    results = play_scraper.search(client.query)
     r = requests.get(f"https://play.google.com?query={args}&page=2&limit=2").json()
     details = "**Title:** `{}`".format(result["title"]) + "\n" \
     "**App ID:** `{}`".format(result["app_id"]) + "\n" \
