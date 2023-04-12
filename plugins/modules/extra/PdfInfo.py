@@ -58,7 +58,7 @@ CLOSE_BUTTON = InlineKeyboardMarkup(
 
 @Client.on_message(filters.document | (filters.document & filters.forwarded)) 
 async def document(bot, message):
-  message_id=int(message.message_id)
+  message_id=int(message.reply_to_message.id)
   chat_id=int(message.chat.id)
   await bot.send_message(text=" ◆ /pdf2txt - Extract text to Txt file \n ◆ /info to Get PDF information",reply_to_message_id=message_id,chat_id=chat_id)
   
