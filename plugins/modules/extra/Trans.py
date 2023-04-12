@@ -10,12 +10,11 @@ form info import AUTH_CHANNEL
 
 
 
-import re
-import secrets
-
-import subprocess
-from asyncio import Lock
-from re import findall
+from googletrans import Translator
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from plugins.helpers.list import list
+from plugins.helpers.database import find_one
 
 from pyrogram import enums, filters
 
