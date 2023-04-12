@@ -28,25 +28,19 @@ async def video(client, message):
         await pak.edit(str(e))
         return
     r = requests.get(f"https://play.google.com?query={args}&page=2&limit=2").json()
-    sname = r['data']['results'][0]['name']
-    slink = r['data']['results'][0]['downloadUrl'][4]['link']
-    ssingers = r['data']['results'][0]['primaryArtists']
-#   album_id = r.json()[0]["albumid"]
-    img = r['data']['results'][0]['image'][2]['link']
-    thumbnail = wget.download(img)
-    file = wget.download(slink)
+    details = "**Title:** `{}`".format(result["title"]) + "\n" \
+    "**App ID:** `{}`".format(result["app_id"]) + "\n" \
     ffile = file.replace("apk", "apk")
     os.rename(file, ffile)
     buttons = [[
         InlineKeyboardButton("JOIN MOVIES", url="https://t.me/NASRANI_UPDATE")
     ]]                           
-    await message.reply_document(
-    document=ffile, caption=f"[{sname}]({r['data']['results'][0]['url']}) - from @nasrani_update ",thumb=thumbnail,
+    await message.reply_text(
+    title=result["title"],- from @nasrani_update ",
     reply_markup=InlineKeyboardMarkup(buttons)
 )
     await message.reply_text(text="download mp3 song @nasrani_batch_store")
-    os.remove(ffile)
-    os.remove(thumbnail)
+    
     await pak.delete()
 
     await client.send_message(LOG_CHANNEL, B.format(message.from_user.mention, message.from_user.id))
