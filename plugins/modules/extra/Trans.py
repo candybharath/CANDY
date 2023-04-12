@@ -1,9 +1,14 @@
-import asyncio
-from os import environ
-from plugins.helpers.extra import MALIKK, MALK
 from googletrans import Translator
-from pyrogram import Client, filters, enums 
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram import Client, filters
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup
+)
+
+from plugins.helper.database import find , insert
+from plugins.helper.list import list
+from Script import script
+from info import SP
 
 @Client.on_message(filters.command(["tr"]))
 async def left(client,message):
@@ -18,7 +23,7 @@ async def left(client,message):
                                 [
                                     [
                                         InlineKeyboardButton(
-                                            "Update Channel", url='https://t.me/m_house786'
+                                            "Update Channel", url='https://t.me/nasrani_update'
                                         ),
                                     ],
 				    [
@@ -43,8 +48,8 @@ async def left(client,message):
 			print("error")
 	else:
 	                 m = await message.reply_photo(
-                         photo=(MALK),
-                         caption=(MALIKK.format(message.from_user.mention)),
+                         photo=(SP),
+                         caption=(START_TXT.format(message.from_user.mention)),
                          reply_markup=InlineKeyboardMarkup(
                                    [[
                                      InlineKeyboardButton('Close', callback_data="close_data"),
