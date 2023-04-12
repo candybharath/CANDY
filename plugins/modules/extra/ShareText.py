@@ -9,6 +9,13 @@ def share_link(text: str) -> str:
 
 @Client.on_message(filters.command(["share", "sharetext", "st", "stxt", "shtxt", "shtext"]))
 async def share_text(client, message):
+    the_real_message = None
+    reply_to_id = None
+
+    if message.reply_to_message:
+        the_real_message = message.reply_to_message
+    else:
+        the_real_message = message
     text = message.text
     reply_to_message_id=reply_to_id
     reply = message.reply_to_message.message.text
