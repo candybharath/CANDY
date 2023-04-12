@@ -153,7 +153,8 @@ async def edit_or_reply(message, text, parse_mode=enums.ParseMode.MARKDOWN):
         if message.reply_to_message:
             kk = message.reply_to_message.id
             return await message.reply_text(
-                text, reply_to_message.id=kk, parse_mode=enums.ParseMode.MARKDOWN
+#                text, reply_to_message.id=kk, parse_mode=enums.ParseMode.MARKDOWN
+                text, reply_to_message.id=kk
             )
                 
             
