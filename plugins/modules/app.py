@@ -30,15 +30,11 @@ async def video(client, message):
     r = requests.get(f"https://play.google.com?query={args}&page=2&limit=2").json()
     details = "**Title:** `{}`".format(result["title"]) + "\n" \
     "**App ID:** `{}`".format(result["app_id"]) + "\n" \
-    ffile = file.replace("apk", "apk")
-    os.rename(file, ffile)
-    buttons = [[
-        InlineKeyboardButton("JOIN MOVIES", url="https://t.me/NASRANI_UPDATE")
-    ]]                           
-    await message.reply_text(
-    title=result["title"],- from @nasrani_update ",
-    reply_markup=InlineKeyboardMarkup(buttons)
-)
+    
+    "\n" + "Made by @FayasNoushad"
+    reply_markup = InlineKeyboardMarkup(
+        [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
+    )
     await message.reply_text(text="download mp3 song @nasrani_batch_store")
     
     await pak.delete()
