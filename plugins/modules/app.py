@@ -13,31 +13,31 @@ Bot = Client(
 
 
 @Client.on_message(filters.command('app') & filters.text)
-async def video(client, message): 
+async def video(client, message):
+    results = play_scraper.search(update.query)
+    answers = []
+    for result in results:
+        details = "**Title:** `{}`".format(result["title"]) + "\n" \
+        "**Description:** `{}`".format(result["description"]) + "\n" \
+        "**App ID:** `{}`".format(result["app_id"]) + "\n" \
+        "**Developer:** `{}`".format(result["developer"]) + "\n" \
+        "**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
+        "**Score:** `{}`".format(result["score"]) + "\n" \
+        "**Price:** `{}`".format(result["price"]) + "\n" \
+        "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
+        "**Free:** `{}`".format(result["free"]) + "\n" \
+        "\n" + "Made by @FayasNoushad"
+        reply_markup = InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
+        ) 
     try:
-       args = message.text.split(None, 1)[1]
-    except:
-        return await message.reply("/svideo requires an argument.")
-    if args.startswith(" "):
-        await message.reply("/svideo requires an argument.")
-        return ""
-    pak = await message.reply('Downloading...')
-    try:
-        r = requests.get(f"https://play.google.com?query={args}&page=1&limit=1").json()
-    except Exception as e:
-        await pak.edit(str(e))
-        return
-    
-    r = play_scraper.search(f"https://play.google.com?query={args}&page=2&limit=2").json()
-    details = "**Title:** `{}`".format(result["title"]) + "\n" \
-    "**App ID:** `{}`".format(result["app_id"]) + "\n" \
-    
-    "\n" + "Made by @FayasNoushad"
-    reply_markup = InlineKeyboardMarkup(
-        [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
+       
+        await message.reply_text(
+        text=result["title"],
+        reply_markup=reply_markup,
+        disable_web_page_preview=True,
+        quote=True
     )
-    await message.reply_text(text="download mp3 song @nasrani_batch_store")
-    
-    await pak.delete()
-
-    await client.send_message(LOG_CHANNEL, B.format(message.from_user.mention, message.from_user.id))
+         except Exception as error:
+            print(error)
+    await message.answer(answers)   
