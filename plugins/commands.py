@@ -890,14 +890,14 @@ async def shortlink(bot, message):
     rm = await message.reply_text("...........")
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
-    btn = [[
+    buttons = [[
         InlineKeyboardButton("Oᴘᴇɴ Hᴇʀᴇ ↓", callback_data=f"opnsetgrp#{grp_id}"),
         InlineKeyboardButton("Oᴘᴇɴ Iɴ PM ⇲", callback_data=f"opnsetpm#{grp_id}")
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await message.reply_text(
     text=f"𝖯𝗂𝗇𝗀!\n{time_taken_s:.3f} ms",
-    reply_markup=InlineKeyboardMarkup(btn),
+    reply_markup=InlineKeyboardMarkup(buttons),
     disable_web_page_preview=True,
     parse_mode=enums.ParseMode.HTML,
     reply_to_message_id=message.id) 
