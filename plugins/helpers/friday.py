@@ -148,16 +148,17 @@ async def fetch_audio(client, message):
     await lel.delete()
     return final_warner
 
-async def edit_or_reply(message, text, parse_mode="md"):
+async def edit_or_reply(message, text, parse_mode=enums.ParseMode.MARKDOWN):
     if message.from_user.id:
         if message.reply_to_message:
-            kk = message.text
+            kk = message.reply_to_message.message_id
             return await message.reply_text(
-                text=kk,
-                parse_mode=enums.ParseMode.HTML
+                text, reply_to_message_id=kk, parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await message.reply_text(text, parse_mode=enums.ParseMode.HTML)
-    return await message.edit(text, parse_mode=enums.ParseMode.HTML)
+                
+            
+        return await message.reply_text(text, parse_mode=enums.ParseMode.MARKDOWN)
+    return await message.edit(text, parse_mode=enums.ParseMode.MARKDOWN)
 
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
