@@ -8,7 +8,7 @@ import time
 import shlex
 import asyncio
 from math import ceil
-from pyrogram import Client
+from pyrogram import Client, filters, enums
 from traceback import format_exc
 from typing import Tuple, Union
 from pyrogram.errors import FloodWait, MessageNotModified
@@ -154,10 +154,10 @@ async def edit_or_reply(message, text, parse_mode="md"):
             kk = message.text
             return await message.reply_text(
                 text=kk,
-                parse_mode=parse_mode
+                parse_mode=enums.ParseMode.HTML
             )
-        return await message.reply_text(text, parse_mode=parse_mode)
-    return await message.edit(text, parse_mode=parse_mode)
+        return await message.reply_text(text, parse_mode=enums.ParseMode.HTML)
+    return await message.edit(text, parse_mode=enums.ParseMode.HTML)
 
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
