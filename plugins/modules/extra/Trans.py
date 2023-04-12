@@ -3,7 +3,7 @@ import traceback
 from functools import wraps
 
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
-form info import AUTH_CHANNEL
+from info import AUTH_CHANNEL
 
 
 
