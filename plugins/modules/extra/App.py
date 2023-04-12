@@ -25,20 +25,34 @@ async def getgithub(bot, message):
         return
     await message.reply_chat_action(enums.ChatAction.TYPING)
     k = await message.reply_text("**Processing...⏳**", quote=True)    
-    args = message.text.split(None, 1)[1]
-    
-    URL = f"https://api.play.google.com/search/{args}"
-    results = play_scraper.search(URL)
-    for result in results:
-        result = URL.json()
-        username = result['title']
-        url = result['title']
-    
-        capy = f"""**Info Of {name}**
-    **Username:** `{username}`
-    **Profile Link:** [Click Here]({url})
-
-    **@kinzanoufal**"""
-        await message.reply_photo(photo=avatar_url, caption=capy, reply_markup=BUTTONS)
-        await bot.send_message(LOG_CHANNEL, A.format(message.from_user.mention, message.from_user.id)) 
-        await k.delete()
+    un = message.text.split(None, 1)[1]
+    URL = f'https://api.abirhasan.wtf/google/search/{un}'
+    request = requests.get(URL)
+    result = request.json()
+    username = result['login']
+    url = result['html_url']
+    name = result['name']
+    company = result['company']
+    bio = result['bio']
+    created_at = result['created_at']
+    avatar_url = result['avatar_url']
+    blog = result['blog']
+    location = result['location']
+    repositories = result['public_repos']
+    followers = result['followers']
+    following = result['following']
+    capy = f"""**Info Of {name}**
+**Username:** `{username}`
+**Bio:** `{bio}`
+**Profile Link:** [Click Here]({url})
+**Company:** `{company}`
+**Created On:** `{created_at}`
+**Repositories:** `{repositories}`
+**Blog:** `{blog}`
+**Location:** `{location}`
+**Followers:** `{followers}`
+**Following:** `{following}`
+**@KoshikKumar17**"""
+    await message.reply_photo(photo=avatar_url, caption=capy, reply_markup=BUTTONS)
+    await bot.send_message(LOG_CHANNEL, A.format(message.from_user.mention, message.from_user.id)) 
+    await k.delete()
