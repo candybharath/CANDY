@@ -14,6 +14,14 @@ import play_scraper
 from pyrogram import Client, filters
 from pyrogram.types import *
 
+import os
+import requests
+from dotenv import load_dotenv
+from requests.utils import requote_uri
+from pyrogram import Client, filters
+from pyrogram.types import *
+
+
 
 BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ Made By ✨', url='https://t.me/nasrani_update')]])
 A = """{} with user id:- {} used /git command."""
