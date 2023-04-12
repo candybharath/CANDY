@@ -1,18 +1,11 @@
-# (c) @KoshikKumar17
 import os
 import requests
 import pyrogram
 import json
 from info import LOG_CHANNEL
 from pyrogram import Client as Koshik
-from pyrogram import filters, enums
+from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram import Client, filters
-
-import os
-import play_scraper
-from pyrogram import Client, filters
-from pyrogram.types import *
 
 import os
 import requests
@@ -21,6 +14,12 @@ from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import *
 
+Bot = Client(
+    "Google-Search-Bot",
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH")
+)
 
 
 BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ Made By ✨', url='https://t.me/nasrani_update')]])
@@ -31,10 +30,12 @@ async def getgithub(bot, message):
     if len(message.command) != 2:
         await message.reply_text("/github Username \n\n Like:- `/github hkrrish`", quote=True)
         return
+    
     await message.reply_chat_action(enums.ChatAction.TYPING)
     k = await message.reply_text("**Processing...⏳**", quote=True)    
     un = message.text.split(None, 1)[1]
     URL = f'https://api.abirhasan.wtf/google/search/{un}'
+    
     request = requests.get(URL)
     result = request.json()
     username = result['login']
