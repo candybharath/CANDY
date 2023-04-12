@@ -17,16 +17,13 @@ async def video(client, message):
     
     results = play_scraper.search(app)    
     details = format(results["title"])
-    reply_markup = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
-    ) 
     try:
        
         await message.reply_text(
-            text=details,
-            reply_markup=reply_markup,
-            disable_web_page_preview=True,
-            quote=True
+        text=details,
+        reply_markup=reply_markup,
+        disable_web_page_preview=True,
+        quote=True
         )
         except Exception as error:
             print(error)
