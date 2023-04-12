@@ -885,6 +885,7 @@ async def shortlink(bot, message):
 
 @Client.on_message(filters.command('set'))
 async def shortlink(bot, message):
+    grp_id = message.chat.id
     start_t = time.time()
     rm = await message.reply_text("...........")
     end_t = time.time()
