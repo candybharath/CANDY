@@ -28,7 +28,7 @@ async def getgithub(bot, message):
     args = message.text.split(None, 1)[1]
     
     URL = f"https://play.google.com/search?query={args}&page=2&limit=2".json()
-    request = play_scraper.search(URL)
+    results = play_scraper.search(URL)
     for result in results:
         result = URL.json()
         username = result['title']
