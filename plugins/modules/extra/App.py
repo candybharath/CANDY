@@ -27,7 +27,7 @@ async def getgithub(bot, message):
     k = await message.reply_text("**Processing...⏳**", quote=True)    
     args = message.text.split(None, 1)[1]
     
-    URL = f'https://play.google.com/search/songs?query={args}&page=2&limit=2").json()
+    URL = f"https://play.google.com/search?query={args}&page=2&limit=2").json()
     request = play_scraper.search(URL)
     result = URL.json()
     username = result['title']
