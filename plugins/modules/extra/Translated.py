@@ -12,16 +12,18 @@ from info import SP
 
 
 HELLO = """
-OK"""
+\n OK
+"""
 @Client.on_message(filters.command(["tr"]))
 async def left(client,message):
 	if (message.reply_to_message):
 		try:
-			lgcd = message.text.split("/tr, (HELLO)")
+			lgcd = message.text.split("/tr")
+                        text = (HELLO)
 			lg_cd = lgcd[1].lower().replace(" ", "")
 			tr_text = message.reply_to_message.text
 			translator = Translator()
-			translation = translator.translate(tr_text,dest = lg_cd)
+			translation = translator.translate(tr_text,text,dest = lg_cd)
 			hehek = InlineKeyboardMarkup(
                                 [
                                     [
@@ -52,7 +54,7 @@ async def left(client,message):
 	else:
 	                 m = await message.reply_photo(
                          photo=(SP),
-                         caption=(START_TXT.format(message.from_user.mention)),
+                         caption=(START_TEXT.format(message.from_user.mention)),
                          reply_markup=InlineKeyboardMarkup(
                                    [[
                                      InlineKeyboardButton('Close', callback_data="close_data"),
