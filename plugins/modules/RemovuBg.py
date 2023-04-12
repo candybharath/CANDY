@@ -38,20 +38,7 @@ BUTTONS = InlineKeyboardMarkup(
 
 @Client.on_message(filters.command("bg") & (filters.photo | filters.video | filters.document))
 async def remove_background(bot, update):
-    if not (REMOVEBG_API or UNSCREEN_API):
-        await update.reply_text(
-            text="Error :- API not found",
-            quote=True,
-            disable_web_page_preview=True,
-            reply_markup=ERROR_BUTTONS
-        )
-        return
-#    await update.reply_chat_action("typing")
-    message = await message.reply_text(
-        text="Processing",
-        quote=True,
-        disable_web_page_preview=True
-    )
+    
     try:
         new_file_name = f"./{str(update.from_user.id)}"
         if (
