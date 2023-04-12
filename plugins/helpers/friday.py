@@ -150,11 +150,14 @@ async def fetch_audio(client, message):
 
 async def edit_or_reply(message, text, parse_mode=enums.ParseMode.MARKDOWN):
     if message.from_user.id:
-        if message.reply_to_message:
+        if message.reply_to_message.text:
+            text = message.text
             kk = message.reply_to_message.id
             return await message.reply_text(
-#                text, reply_to_message.id=kk, parse_mode=enums.ParseMode.MARKDOWN
-                text, reply_to_message.id=kk
+#                text=message.text,
+                 reply_to_message.id=kk,
+                 parse_mode=enums.ParseMode.MARKDOWN
+                text, reply_to_message.id=kk, parse_mode=enums.ParseMode.MARKDOWN
             )
                 
             
