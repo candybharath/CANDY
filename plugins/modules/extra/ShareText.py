@@ -22,6 +22,6 @@ async def share_text(client, message):
         await message.reply_text(
             text=f"**Notice:**\n\n1. Reply Any Messages.\n2. No Media Support\n\n**Any Question Join Support Chat**")
             
-            return
+        return
             await message.reply_text(share_link(input_text), reply_to_message_id=reply_id)
         
