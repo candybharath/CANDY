@@ -20,7 +20,7 @@ async def left(client,message):
 			lg_cd = message.text
 			tr_text = message.reply_to_message.text
 			translator = Translator()
-			translation = translator.translate(tr_text,text,dest = lg_cd)
+			translation = translator.translate(tr_text,dest = lg_cd)
 			hehek = InlineKeyboardMarkup(
                                 [
                                     [
