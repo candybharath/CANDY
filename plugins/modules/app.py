@@ -14,7 +14,8 @@ Bot = Client(
 
 @Client.on_message(filters.command('app') & filters.text)
 async def video(client, message):
-    results = play_scraper.search(update.query)
+    app = mesaage.text
+    results = play_scraper.search(app)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
