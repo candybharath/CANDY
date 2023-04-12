@@ -151,7 +151,7 @@ async def fetch_audio(client, message):
 async def edit_or_reply(message, text, parse_mode="md"):
     if message.from_user.id:
         if message.reply_to_message:
-            kk = message.message_id
+            kk = message.text
             return await message.reply_text(
                 text=kk,
                 parse_mode=parse_mode
