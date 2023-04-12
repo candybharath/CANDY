@@ -20,17 +20,8 @@ async def share_text(client, message):
         input_text = message.text or id.caption
     else:
         await message.reply_text(
-            text=f"**Notice:**\n\n1. Reply Any Messages.\n2. No Media Support\n\n**Any Question Join Support Chat**",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            "Support Chat", url=f"https://t.me/nasrani_update")
-                    ]                
-                ]
-            ),
-            message.message_id=id
-        )
-        return
-    await message.reply_text(share_link(input_text), reply_to_message_id=reply_id)
+            text=f"**Notice:**\n\n1. Reply Any Messages.\n2. No Media Support\n\n**Any Question Join Support Chat**")
+            
+            return
+            await message.reply_text(share_link(input_text), reply_to_message_id=reply_id)
         
