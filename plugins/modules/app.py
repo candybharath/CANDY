@@ -34,7 +34,7 @@ async def video(client, message):
         try:
        
             await message.reply_text(
-            text=app,
+            text=details,
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             quote=True
@@ -42,7 +42,7 @@ async def video(client, message):
         except Exception as error:
             print(error)
     await message.reply_text(
-    text=app,
+    text=details,
     reply_markup=reply_markup,
     disable_web_page_preview=True,
     quote=True
