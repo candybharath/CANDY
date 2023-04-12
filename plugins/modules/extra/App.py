@@ -50,18 +50,20 @@ async def getgithub(bot, message):
     repositories = result['public_repos']
     followers = result['followers']
     following = result['following']
-    capy = f"""**Info Of {name}**
-**Username:** `{username}`
-**Bio:** `{bio}`
-**Profile Link:** [Click Here]({url})
-**Company:** `{company}`
-**Created On:** `{created_at}`
-**Repositories:** `{repositories}`
-**Blog:** `{blog}`
-**Location:** `{location}`
-**Followers:** `{followers}`
-**Following:** `{following}`
-**@KoshikKumar17**"""
-    await message.reply_photo(photo=avatar_url, caption=capy, reply_markup=BUTTONS)
-    await bot.send_message(LOG_CHANNEL, A.format(message.from_user.mention, message.from_user.id)) 
-    await k.delete()
+
+    sname = r['data']['results'][0]['name']
+    slink = r['data']['results'][0]['downloadUrl'][4]['link']
+    ssingers = r['data']['results'][0]['primaryArtists']
+#   album_id = r.json()[0]["albumid"]
+    img = r['data']['results'][0]['image'][2]['link']
+    thumbnail = wget.download(img)
+    file = wget.download(slink)
+    ffile = file.replace("mp3", "mp4")
+    os.rename(file, ffile)
+    buttons = [[
+        InlineKeyboardButton("JOIN MOVIES", url="https://t.me/NASRANI_UPDATE")
+    ]]                           
+    await message.reply_text(
+    text=f"[{sname}]({r['data']['results'][0]['url']}) - from @nasrani_update ",thumb=thumbnail,
+    reply_markup=InlineKeyboardMarkup(buttons)
+)
