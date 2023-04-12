@@ -1,5 +1,5 @@
 from googletrans import Translator
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup
