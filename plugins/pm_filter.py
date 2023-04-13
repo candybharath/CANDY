@@ -978,54 +978,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
-        
-
-        
-
-
-
-
-    elif query.data == "imdb":
-        settings = await get_settings(query.message.chat.id)
-        search = query.message.text
-        imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None        
-#        await query.answer(QUERY_TEMPLATE, show_alert=True)
-        TEMPLATE = settings['template']
-        if imdb:
-            cap = IMDB_TEMPLATE.format(
-            query=search,            
-            title=imdb['title'],
-            votes=imdb['votes'],
-            aka=imdb["aka"],
-            seasons=imdb["seasons"],
-            box_office=imdb['box_office'],
-            localized_title=imdb['localized_title'],
-            kind=imdb['kind'],
-            imdb_id=imdb["imdb_id"],
-            cast=imdb["cast"],
-            runtime=imdb["runtime"],
-            countries=imdb["countries"],
-            certificates=imdb["certificates"],
-            languages=imdb["languages"],
-            director=imdb["director"],
-            writer=imdb["writer"],
-            producer=imdb["producer"],
-            composer=imdb["composer"],
-            cinematographer=imdb["cinematographer"],
-            music_team=imdb["music_team"],
-            distributors=imdb["distributors"],
-            release_date=imdb['release_date'],
-            year=imdb['year'],
-            genres=imdb['genres'],
-            poster=imdb['poster'],
-            plot=imdb['plot'],
-            rating=imdb['rating'],
-            url=imdb['url'],
-            **locals()
-        )    
-        await query.answer(QUERY_TEMPLATE,  show_alert=True)
-
-
+               
+    
 
 
     elif query.data.startswith("model"):
