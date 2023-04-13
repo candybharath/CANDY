@@ -979,7 +979,57 @@ async def cb_handler(client: Client, query: CallbackQuery):
         searchh = query.data.split('#')
         imdb = await get_poster(searchh) if IMDB else None
         await query.answer(f"{imdb.get('title')}", show_alert=True)
-        
+        message = query.message.reply_to_message or query.message
+        if imdb:
+            caption = IMDB_TEMPLATE.format(
+                query = imdb['title'],
+                title = imdb['title'],
+                votes = imdb['votes'],
+                aka = imdb["aka"],
+                seasons = imdb["seasons"],
+                box_office = imdb['box_office'],
+                localized_title = imdb['localized_title'],
+                kind = imdb['kind'],
+                imdb_id = imdb["imdb_id"],
+                cast = imdb["cast"],
+                runtime = imdb["runtime"],
+                countries = imdb["countries"],
+                certificates = imdb["certificates"],
+                languages = imdb["languages"],
+                director = imdb["director"],
+                writer = imdb["writer"],
+                producer = imdb["producer"],
+                composer = imdb["composer"],
+                cinematographer = imdb["cinematographer"],
+                music_team = imdb["music_team"],
+                distributors = imdb["distributors"],
+                release_date = imdb['release_date'],
+                year = imdb['year'],
+                genres = imdb['genres'],
+                poster = imdb['poster'],
+                plot = imdb['plot'],
+                rating = imdb['rating'],
+                url = imdb['url'],
+                **locals()
+            )
+        else:
+            caption = "No Results"
+        if imdb.get('poster'):
+            try:
+                await query.answer(f"{imdb.get('title')}", show_alert=True)
+            except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
+                pic = imdb.get('poster')
+                poster = pic.replace('.jpg', "._V1_UX360.jpg")
+                await query.answer(f"{imdb.get('title')}", show_alert=True)
+            except Exception as e:
+                logger.exception(e)
+                await query.answer(f"{imdb.get('title')}", show_alert=True)
+            await query.message.delete()
+         else:
+            await quer_y.answer(f"{imdb.get('title')}", show_alert=True)
+         await quer_y.answer()
+
+
 
 
 
