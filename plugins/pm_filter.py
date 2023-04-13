@@ -975,6 +975,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
+    elif query.data == "imo":
+        i, movie = query.data.split('#')
+        imdb = await get_poster(query=movie, id=True)
+        await query.answer(f"{imdb.get('title')}", show_alert=True)
+        
+
+
 
     elif query.data.startswith("model"):
         ident, grp_id = query.data.split("#")
@@ -1868,7 +1875,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'𝐅𝐢𝐥𝐞𝐬: {total_results}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{search}', 'dupe')
+                    InlineKeyboardButton(f'{search}', 'imo')
                 ]
             )
         else:
@@ -1876,7 +1883,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'𝐅𝐢𝐥𝐞𝐬: {total_results}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{search}', 'dupe')
+                    InlineKeyboardButton(f'{search}', 'imo')
                 ]
             )
                 
@@ -1889,7 +1896,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'𝐅𝐢𝐥𝐞𝐬: {total_results}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{search}', 'dupe')
+                    InlineKeyboardButton(f'{search}', 'imo')
                 ]
             )
 
@@ -1898,7 +1905,7 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(f'𝐅𝐢𝐥𝐞𝐬: {total_results}', 'dupe'),
                     InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{search.replace(' ', '_')}#{key}"),
-                    InlineKeyboardButton(f'{search}', 'dupe')
+                    InlineKeyboardButton(f'{search}', 'imo')
                 ]
             )    
     btn.insert(0, [
