@@ -988,14 +988,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "imdb":
         searchh = query.message.text
         imdb = await get_poster(searchh) if IMDB else None
-        btn = [
-            [
-                InlineKeyboardButton(
-                    text=f"{imdb.get('title')}",
-                    url=imdb['url'],
-                )
-            ]
-        ]
+        
         if imdb:
             caption = IMDB_TEMPLATE.format(
                 query=imdb['title'],
@@ -1046,7 +1039,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.delete()
         else:
             await query.message.edit(caption, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=False)
-        await query.answer(f"{imdb.get('title')}", show_alert=True)
+        await query.answer(f"{imdb['poster']}", show_alert=True)
 
 
 
