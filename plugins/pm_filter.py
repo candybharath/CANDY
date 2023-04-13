@@ -982,8 +982,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         message = query.message.reply_to_message or query.message
         if imdb:
             caption = IMDB_TEMPLATE.format(
-                query = imdb['title'],
-                title = imdb['title'],
+                query=searchh,
+                title=imdb['title'],
                 votes = imdb['votes'],
                 aka = imdb["aka"],
                 seasons = imdb["seasons"],
