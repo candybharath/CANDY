@@ -978,59 +978,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
-    elif query.data == "imdb":
-        
-        searchh = query.data.split('#')
-        imdb = await get_poster(searchh) if IMDB else None
-        
+    elif query.data == "imdb":       
+        ident, searchh = query.data.split('#')
+        imdb = await get_poster(searchh) if IMDB else None        
         message = query.message.reply_to_message or query.message
-        if imdb:
-            caption = QUERY_TEMPLATE.format(
-                query = searchh,
-                title = imdb['title'],
-                votes = imdb['votes'],
-                aka = imdb["aka"],
-                seasons = imdb["seasons"],
-                box_office = imdb['box_office'],
-                localized_title = imdb['localized_title'],
-                kind = imdb['kind'],
-                imdb_id = imdb["imdb_id"],
-                cast = imdb["cast"],
-                runtime = imdb["runtime"],
-                countries = imdb["countries"],
-                certificates = imdb["certificates"],
-                languages = imdb["languages"],
-                director = imdb["director"],
-                writer = imdb["writer"],
-                producer = imdb["producer"],
-                composer = imdb["composer"],
-                cinematographer = imdb["cinematographer"],
-                music_team = imdb["music_team"],
-                distributors = imdb["distributors"],
-                release_date = imdb['release_date'],
-                year = imdb['year'],
-                genres = imdb['genres'],
-                poster = imdb['poster'],
-                plot = imdb['plot'],
-                rating = imdb['rating'],
-                url = imdb['url'],
-                **locals()
-            )
-        
-            if imdb and imdb.get('poster'):
-                try:
-                    await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-                except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
-                    pic = imdb.get('poster')
-                    poster = pic.replace('.jpg', "._V1_UX360.jpg")
-                    await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-                except Exception as e:
-                    logger.exception(e)
-                    await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-                await query.message.delete()
-            else:
-                await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-            await query.answer()
+        await query.answer("romanjam", show_alert=True)
         
 
         
