@@ -1025,20 +1025,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             caption = "No Results"
         if imdb.get('poster'):
             try:
-                await query.message.reply_photo(photo=imdb['poster'], caption=caption,
-                                                reply_markup=InlineKeyboardMarkup(btn))
+                await query.answer(f"{imdb['poster']}", show_alert=True)
             except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
                 pic = imdb.get('poster')
                 poster = pic.replace('.jpg', "._V1_UX360.jpg")
-                await query.message.reply_photo(photo=imdb['poster'], caption=caption,
-                                                reply_markup=InlineKeyboardMarkup(btn))
+                await query.answer(f"{imdb['poster']}", show_alert=True)
             except Exception as e:
                 logger.exception(e)
-                await query.message.reply(caption, reply_markup=InlineKeyboardMarkup(btn),
-                                          disable_web_page_preview=False)
+                await query.answer(f"{imdb['poster']}", show_alert=True)
             await query.message.delete()
         else:
-            await query.message.edit(caption, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=False)
+            await query.answer(f"{imdb['poster']}", show_alert=True)
         await query.answer(f"{imdb['poster']}", show_alert=True)
 
 
