@@ -1388,12 +1388,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if imdb:
                 caption = QUERY_TEMPLATE.format(
                 title=imdb['title'],
-                 url=imdb['url'],
+                url=imdb['url'],
                 **locals()
             )
-            if imdb and imdb.get('poster'):
+        if imdb and imdb.get('poster'):
                 
-                await query.answer(f"📽️{imdb.get('title')}📽️", show_alert=True)
+            await query.answer(f"📽️{imdb.get('title')}📽️", show_alert=True)
 
 
     elif query.data == "reqinfo":
