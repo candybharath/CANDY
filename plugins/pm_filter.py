@@ -976,20 +976,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
     elif query.data == "imdb":
-        i, movie = query.data.split('#')
-        imdb = await get_poster(query=movie, id=True)
-        btn = [
-                [
-                    InlineKeyboardButton(
-                        text=f"{imdb.get('title')}",
-                        url=imdb['url'],
-                    )
-                ]
-            ]
+        
+        searchh = query.data.split('#')
+        imdb = await get_poster(searchh) if IMDB else None
+        
         message = query.message.reply_to_message or query.message
         if imdb:
             caption = IMDB_TEMPLATE.format(
-                query = imdb['title'],
+                query = searchh,
                 title = imdb['title'],
                 votes = imdb['votes'],
                 aka = imdb["aka"],
