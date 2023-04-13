@@ -976,8 +976,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
     elif query.data == "imo":
-        i, movie = query.data.split('#')
-        imdb = await get_poster(query=movie, id=True)
+        searchh = query.data.split('#')
+        imdb = await get_poster(searchh) if IMDB else None
         await query.answer(f"{imdb.get('title')}", show_alert=True)
         
 
