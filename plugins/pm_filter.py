@@ -1391,7 +1391,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 url=imdb['url'],
                 **locals()
             )
-            await query.answer(f"caption", show_alert=True)
+        await query.answer(f"caption", show_alert=True)
             
 
     elif query.data == "reqinfo":
