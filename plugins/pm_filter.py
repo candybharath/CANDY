@@ -1014,7 +1014,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             caption = "No Results"
-        if imdb.get('poster'):
+        if imdb and imdb.get('poster'):
             try:
                 await query.answer(f"{imdb.get('title')}", show_alert=True)
             except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
