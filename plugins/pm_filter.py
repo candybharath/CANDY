@@ -988,7 +988,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "imdb":
         searchh = query.message.text
         imdb = await get_poster(searchh) if IMDB else None        
-        await query.answer(f"{imdb.get('title')}", show_alert=True)
+        await query.answer(f"{imdb.get['title']}", show_alert=True)
             
 
     elif query.data.startswith("model"):
