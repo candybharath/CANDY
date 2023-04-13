@@ -1015,7 +1015,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         
             if imdb and imdb.get('poster'):
-            try:
+                try:
                     await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
                 except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
                     pic = imdb.get('poster')
