@@ -652,7 +652,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode=enums.ParseMode.MARKDOWN
         )
-        return await query.answer(MSG_ALRT)
+        return await query.answer(MSG_ALRT, show_alert=True)
+
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -673,7 +674,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             await query.message.edit_text('Sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ!!', parse_mode=enums.ParseMode.MARKDOWN)
-        return await query.answer(MSG_ALRT)
+        return await query.answer(MSG_ALRT, show_alert=True)
+
     elif "disconnect" in query.data:
         await query.answer()
 
@@ -696,7 +698,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer(MSG_ALRT)
+        return await query.answer(MSG_ALRT, show_alert=True)
+
     elif "deletecb" in query.data:
         await query.answer()
 
@@ -714,7 +717,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer(MSG_ALRT)
+        return await query.answer(MSG_ALRT, show_alert=True)
+
     elif query.data == "backcb":
         await query.answer()
 
@@ -725,7 +729,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_text(
                 "Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴs!! Cᴏɴɴᴇᴄᴛ ᴛᴏ sᴏᴍᴇ ɢʀᴏᴜᴘs ғɪʀsᴛ.",
             )
-            return await query.answer(MSG_ALRT)
+            return await query.answer(MSG_ALRT, show_alert=True)
+
         buttons = []
         for groupid in groupids:
             try:
