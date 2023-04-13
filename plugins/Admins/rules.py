@@ -8,7 +8,7 @@ from Script import script
 import os
 from pyrogram import Client, filters, enums
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
-from info import BR_IMDB_TEMPLATE, LOGIN_CHANNEL, ADMINS, PROTECT_CONTENT, AUTH_CHANNEL, BATCH_LINK, IMDB_TEMPLATE
+from info import BR_IMDB_TEMPLATE, LOGIN_CHANNEL, ADMINS, PROTECT_CONTENT, AUTH_CHANNEL, BATCH_LINK
 from utils import extract_user, get_file_id, get_poster, last_online
 from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings
 from database.ia_filterdb import Media, get_file_details, get_search_results, get_bad_files
@@ -80,14 +80,6 @@ UP_MESSAGE = """
 """
 
 
-
-
-
-
-
-
-
-
 @Client.on_message(filters.command("rules") & filters.group) 
 async def r_message(client, message):
 #    protect = "/pbatch" if PROTECT_CONTENT else "batch"
@@ -118,7 +110,7 @@ async def r_message(client, message):
 
 
 
-@Client.on_message(filters.private & filters.command("new") & filters.reply & filters.user(ADMINS))             
+@Client.on_message(filters.private & filters.command("new") & filters.user(ADMINS))             
 async def start_message(client, message):    
     searchh = message.text 
 # @Client.on_message(filters.private & filters.forwarded)
@@ -187,13 +179,3 @@ async def start_message(client, message):
             )
         except Exception as e:
             logger.exception(e)
-
-
-
-
-
-
-
-
-
-
