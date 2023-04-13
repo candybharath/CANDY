@@ -1012,23 +1012,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 url = imdb['url'],
                 **locals()
             )
-        else:
-            caption = "No Results"
-        if imdb and imdb.get('poster'):
-            try:
-                await query.answer(f"{title}", show_alert=True)
-            except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
-                pic = imdb.get('poster')
-                poster = pic.replace('.jpg', "._V1_UX360.jpg")
-                await query.answer(f"{title}", show_alert=True)
-            except Exception as e:
-                logger.exception(e)
-                await query.answer(f"{title}", show_alert=True)
-            await query.message.delete()
-        else:
-            await query.answer(f"{title}", show_alert=True)
-            await query.answer()
-
+            if imdb and imdb.get('poster'):
+                try:
+                    await query.answer(f"{imdb.get('title')}", show_alert=True)
+                except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
+                    pic = imdb.get('poster')
+                    poster = pic.replace('.jpg', "._V1_UX360.jpg")
+                    await query.answer(f"{imdb.get('title')}", show_alert=True)
+                except Exception as e:
+                    logger.exception(e)
+                 
 
 
 
