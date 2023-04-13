@@ -986,9 +986,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
     elif query.data == "imb":
-        searchh = query.data.split('#')
+        searchh = message.text
         imdb = await get_poster(searchh) if IMDB else None
-#        await query.answer(f"{imdb.get('title')}", show_alert=True)
+        await query.answer(f"{imdb('title')}", show_alert=True)
         message = query.message.reply_to_message or query.message
         if imdb:
             caption = IMDB_TEMPLATE.format(
@@ -1382,19 +1382,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)
 
-    elif query.data == "imdb":
-        searchh = query.message.text
-        imdb = await get_poster(searchh) if IMDB else None
-        title = imdb['title']
-        if imdb:
-                caption = QUERY_TEMPLATE.format(
-                title=imdb['title'],
-                url=imdb['url'],
-                **locals()
-            )
-#                await query.answer(f"{title}", show_alert=True)            
-                await client.answer_callback_query(query_id, text=text, show_alert=True)
-
+    
 
 
     elif query.data == "reqinfo":
