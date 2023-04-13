@@ -891,8 +891,8 @@ async def shortlink(bot, message):
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
     buttons = [[
-        InlineKeyboardButton("Oᴘᴇɴ Hᴇʀᴇ ↓", callback_data=f"opnsetgrp#{grp_id}"),
-        InlineKeyboardButton("Oᴘᴇɴ Iɴ PM ⇲", callback_data=f"opnsetpm#{grp_id}")
+        InlineKeyboardButton("Oᴘᴇɴ Hᴇʀᴇ ↓", callback_data=f"model#{grp_id}"),
+        InlineKeyboardButton("Oᴘᴇɴ Iɴ PM ⇲", callback_data=f"model#{grp_id}")
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await message.reply_text(
