@@ -986,8 +986,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
     elif query.data == "imdb":
-        searchh = query.message.text
-        imdb = await get_poster(searchh) if IMDB else None        
+        i, movie = query.data.split('#')
+        imdb = await get_poster(query=movie, id=True)        
         message = query.message.reply_to_message or query.message
         caption = IMDB_TEMPLATE.format(
             query=searchh,
