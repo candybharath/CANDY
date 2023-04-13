@@ -989,7 +989,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(query.message.chat.id)
         search = query.message.text
         imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None        
-        await query.answer(imdb['title'], show_alert=True)
+        await query.answer("{imdb['title']}", show_alert=True)
             
 
     elif query.data.startswith("model"):
