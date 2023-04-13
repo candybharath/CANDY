@@ -986,9 +986,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
     elif query.data == "imdb":
-        searchh = query.message.text
-        movies = await get_poster(searchh, bulk=True)
-        imdb = await get_poster(searchh) if IMDB else None        
+        search = query.message.text
+        imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None        
         await query.answer(imdb.get['title'], show_alert=True)
             
 
