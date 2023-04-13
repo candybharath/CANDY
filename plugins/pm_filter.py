@@ -992,7 +992,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         caption = IMDB_TEMPLATE.format(
             query=searchh,
 #            title=imdb.get['title'],imdb.get('title')
-            title=imdb.get('title')
+            title=imdb.get('title'),
             votes = imdb['votes'],
             aka = imdb["aka"],
             seasons = imdb["seasons"],
