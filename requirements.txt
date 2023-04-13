@@ -43,8 +43,6 @@ python-decouple
 pyshorteners
 gTTS
 PyPDF2
-Wikipedia
-Shazamio
 ffmpeg-python>=0.2.0
 ytthumb
 YoutubeTags
