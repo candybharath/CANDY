@@ -1391,6 +1391,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 url=imdb['url'],
                 **locals()
             )
+            await query.answer(f"caption", show_alert=True)
         else:
 #        if imdb and imdb.get('poster'):
                 
