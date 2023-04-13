@@ -985,7 +985,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 
-    elif query.data == "imdb":
+    elif query.data == "imb":
         searchh = query.data.split('#')
         imdb = await get_poster(searchh) if IMDB else None
 #        await query.answer(f"{imdb.get('title')}", show_alert=True)
@@ -1381,6 +1381,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(f"Hᴇʏ {user.first_name}, Yᴏᴜʀ Rᴇᴏ̨ᴜᴇsᴛ ɪs Uɴᴀᴠᴀɪʟᴀʙʟᴇ !", show_alert=True)
         else:
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)
+
+    elif query.data == "imdb":
+        searchh = query.message.text
+        imdb = await get_poster(searchh) if IMDB else None    
+        await query.answer(text=script.QUERY_TEMPLATE, show_alert=True)
+
 
     elif query.data == "reqinfo":
         await query.answer(text=script.REQINFO, show_alert=True)
