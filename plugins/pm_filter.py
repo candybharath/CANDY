@@ -978,26 +978,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
-    elif query.data == "imd":       
-        searchh = query.data.split('#')
-        imdb = await get_poster(searchh) if IMDB else None        
-        message = query.message.reply_to_message or query.message
-        if imdb:
-            cap = IMDB_TEMPLATE.format(
-                query=searcch,            
-                title=imdb['title']              **locals()
-            )
-        if imdb and imdb.get('poster'):
-            try:
-                await query.answer(f"{imdb['title']}", show_alert=True)
         
 
         
-
-
-
-
-
 
 
 
