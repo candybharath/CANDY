@@ -977,10 +977,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
     elif query.data.startswith("model"):
-        ident, grp_id, searchh = query.data.split("#")
+        ident, grp_id = query.data.split("#")
         userid = query.from_user.id if query.from_user else None
-        st = await client.get_chat_member(grp_id, userid)
-        imdb = await get_poster(searchh) if IMDB else None
+        st = await client.get_chat_member(grp_id, userid)        
         if (
                 st.status != enums.ChatMemberStatus.ADMINISTRATOR
                 and st.status != enums.ChatMemberStatus.OWNER
@@ -991,7 +990,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         title = query.message.chat.title
         settings = await get_settings(grp_id)
         btn2 = [[
-                 InlineKeyboardButton(f"{imdb.get('title')}", url=f"t.me/{temp.U_NAME}")
+                 InlineKeyboardButton(" OPEN PM", url=f"t.me/{temp.U_NAME}")
                ]]
         reply_markup = InlineKeyboardMarkup(btn2)
         await query.message.edit_text(f"<b>Yᴏᴜʀ sᴇᴛᴛɪɴɢs ᴍᴇɴᴜ ғᴏʀ {title} ʜᴀs ʙᴇᴇɴ sᴇɴᴛ ᴛᴏ ʏᴏᴜʀ PM</b>")
