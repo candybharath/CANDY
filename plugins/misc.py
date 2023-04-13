@@ -201,7 +201,7 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
-            await quer_y.answer(f"{imdb.get('title')}}", show_alert=True)
+            await quer_y.answer(f"{imdb.get('title')}", show_alert=True)
         except Exception as e:
             logger.exception(e)
             await quer_y.answer(f"{imdb.get('title')}", show_alert=True)
