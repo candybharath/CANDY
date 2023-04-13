@@ -110,7 +110,7 @@ async def r_message(client, message):
 
 
 
-@Client.on_message(filters.private & filters.command("new") & filters.user(ADMINS))             
+@Client.on_message(filters.reply)             
 async def start_message(client, message):    
     searchh = message.text 
 # @Client.on_message(filters.private & filters.forwarded)
