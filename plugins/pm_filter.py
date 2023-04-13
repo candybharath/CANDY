@@ -1013,22 +1013,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 url = imdb['url'],
                 **locals()
             )
-        else:
-            caption = "No Results"
-        if imdb.get('poster'):
+        
+            if imdb and imdb.get('poster'):
             try:
+                    await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
+                except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
+                    pic = imdb.get('poster')
+                    poster = pic.replace('.jpg', "._V1_UX360.jpg")
+                    await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
+                except Exception as e:
+                    logger.exception(e)
+                    await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
+                await query.message.delete()
+            else:
                 await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-            except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
-                pic = imdb.get('poster')
-                poster = pic.replace('.jpg', "._V1_UX360.jpg")
-                await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-            except Exception as e:
-                logger.exception(e)
-                await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-            await query.message.delete()
-        else:
-            await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name), show_alert=True)
-        await query.answer()
+            await query.answer()
         
 
         
