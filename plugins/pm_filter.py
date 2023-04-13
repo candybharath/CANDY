@@ -1026,7 +1026,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(f"{imdb.get('title')}", show_alert=True)
             await query.message.delete()
         else:
-            await quer_y.answer(f"{imdb.get('title')}", show_alert=True)
+            await query.answer(f"{imdb.get('title')}", show_alert=True)
             await query.answer()
 
 
