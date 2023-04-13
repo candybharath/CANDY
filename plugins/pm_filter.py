@@ -976,7 +976,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return await query.answer(f"Eʀʀᴏʀ: {is_over}", show_alert=True)
 
     elif query.data == "imdb":
-        i, movie = quer_y.data.split('#')
+        i, movie = query.data.split('#')
         imdb = await get_poster(query=movie, id=True)
         btn = [
                 [
@@ -986,7 +986,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
                 ]
             ]
-        message = quer_y.message.reply_to_message or quer_y.message
+        message = query.message.reply_to_message or query.message
         if imdb:
             caption = IMDB_TEMPLATE.format(
                 query = imdb['title'],
