@@ -1023,7 +1023,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             url=imdb['url'],
             **locals()
         )    
-        await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name, title),  show_alert=True)
+        await query.answer(script.QUERY_TEMPLATE.format(query.from_user.first_name, user_name= '' if title is None else title),  show_alert=True)
 
 
 
