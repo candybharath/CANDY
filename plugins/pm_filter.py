@@ -598,7 +598,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             title = query.message.chat.title
 
         else:
-            return await query.answer(MSG_ALRT, show_alert=True)
+            return await query.answer("✔️✔️", show_alert=True)
 
         st = await client.get_chat_member(grp_id, userid)
         if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
@@ -652,8 +652,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode=enums.ParseMode.MARKDOWN
         )
-        return await query.answer(MSG_ALRT, show_alert=True)
-
+        return await query.answer("✔️✔️", show_alert=True)
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -674,8 +673,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             await query.message.edit_text('Sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ!!', parse_mode=enums.ParseMode.MARKDOWN)
-        return await query.answer(MSG_ALRT, show_alert=True)
-
+        return await query.answer("✔️✔️", show_alert=True)
     elif "disconnect" in query.data:
         await query.answer()
 
@@ -698,7 +696,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer(MSG_ALRT, show_alert=True)
+        return await query.answer("✔️✔️", show_alert=True)
 
     elif "deletecb" in query.data:
         await query.answer()
@@ -717,7 +715,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer(MSG_ALRT, show_alert=True)
+        return await query.answer("✔️✔️", show_alert=True)
 
     elif query.data == "backcb":
         await query.answer()
@@ -729,7 +727,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_text(
                 "Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴs!! Cᴏɴɴᴇᴄᴛ ᴛᴏ sᴏᴍᴇ ɢʀᴏᴜᴘs ғɪʀsᴛ.",
             )
-            return await query.answer(MSG_ALRT, show_alert=True)
+            return await query.answer("✔️✔️", show_alert=True)
 
         buttons = []
         for groupid in groupids:
